@@ -1,2 +1,6 @@
 dashboard.html
 *.plain.html
+catalog.json
+roster.json
+creds.json
+portal_template.html

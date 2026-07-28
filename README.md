@@ -15,3 +15,25 @@ Do not hand-edit index.html — use build.py.
   python3 build.py encrypt --in dashboard.html --out index.html --password "..."
 
 dashboard.html is the plaintext working copy and is git-ignored. Never commit it.
+
+---
+
+## investors/ — Solid Ground Capital investor portal
+
+Published at https://javad-SOLID.github.io/sredeal/investors/ (login required).
+
+Same principle as the dashboard: the repo is public, so nothing is stored in
+plaintext. investors/index.html holds one AES-256-GCM catalogue blob (deals,
+projects, fund figures) plus one encrypted vault per member. A member's vault is
+sealed under their own passphrase and carries a copy of the catalogue key, so
+each member can read the shared catalogue and their own holdings and nobody
+else's.
+
+  python3 portal_build.py catalog-get --in investors/index.html --out catalog.json --key "$CK"
+  python3 portal_build.py catalog-set --in investors/index.html --catalog catalog.json --out investors/index.html --key "$CK"
+  python3 portal_build.py add-investor --in investors/index.html --out investors/index.html --key "$CK" \
+      --roster-entry '{"username":"...","name":"...", ...}' --password '...'
+  python3 portal_build.py list-investors --in investors/index.html
+
+catalog.json, roster.json and creds.json are git-ignored — they are the
+plaintext forms and must never be committed.
