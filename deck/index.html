@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<script type="application/json" id="cowork-artifact-meta">
+{
+  "name": "SGC Investor Deck",
+  "schemaVersion": 1,
+  "description": "Solid Ground Capital investor presentation — 20 interactive slides covering the builder-owned thesis, the construction cost advantage, the Deal Scout sourcing engine, live comp-verified deals with honest downside cases, the investor portal, structures and the $3M raise. Arrow-key navigation, live calculator, printable to PDF.",
+  "mcpTools": [],
+  "mcpServerNames": []
+}
+</script>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Solid Ground Capital — Investor Presentation</title>
+<style>
+:root{
+  --paper:#f9f9f7; --card:#fcfcfb; --card2:#f4f3f0;
+  --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+  --grid:#e1e0d9; --rule:#c3c2b7; --border:rgba(11,11,11,.10);
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a;
+  --good:#0ca30c; --goodtx:#006300; --warn:#fab219; --serious:#ec835a; --crit:#d03b3b;
+  --ink-dark:#0d0d0d;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--ink-dark); color:var(--ink);
+  -webkit-font-smoothing:antialiased; overflow:hidden;
+}
+button{font:inherit;cursor:pointer}
+
+/* ── stage ── */
+#stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+.slide{
+  position:absolute;width:100%;height:100%;
+  display:none;flex-direction:column;
+  background:var(--paper);padding:56px 72px 64px;
+  opacity:0;transition:opacity .28s ease;
+}
+.slide.on{display:flex;opacity:1}
+.slide.dark{background:var(--ink-dark);color:#fff;--ink:#fff;--ink2:#c3c2b7;--card:#1a1a19;--card2:#222221;--grid:#2c2c2a;--rule:#383835;--border:rgba(255,255,255,.12);--s1:#3987e5;--s2:#d95926;--s3:#199e70;--goodtx:#0ca30c}
+
+/* ── chrome ── */
+.slabel{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--s1);margin-bottom:14px;flex:none}
+h1.big{font-size:clamp(34px,4.4vw,60px);font-weight:750;letter-spacing:-.022em;line-height:1.05}
+h2.t{font-size:clamp(26px,3vw,40px);font-weight:750;letter-spacing:-.018em;line-height:1.12;margin-bottom:10px}
+p.lead{font-size:clamp(15px,1.35vw,19px);color:var(--ink2);line-height:1.55;max-width:64ch}
+p.lead b,li b{color:var(--ink);font-weight:650}
+.body{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center}
+.slide.top .body{justify-content:flex-start}
+footer.bar{
+  flex:none;display:flex;justify-content:space-between;align-items:center;
+  border-top:1px solid var(--grid);padding-top:12px;margin-top:20px;
+  font-size:11px;color:var(--muted);letter-spacing:.03em;
+}
+.progress{position:fixed;left:0;top:0;height:3px;background:var(--s1);z-index:50;transition:width .28s ease}
+.nav{position:fixed;right:22px;bottom:18px;display:flex;gap:7px;z-index:50}
+.nav button{
+  width:34px;height:34px;border-radius:9px;border:1px solid var(--border);
+  background:rgba(252,252,251,.92);color:#0b0b0b;font-size:15px;line-height:1;
+  display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.14)
+}
+.nav button:hover{border-color:var(--s1)}
+.hint{position:fixed;left:22px;bottom:22px;font-size:11px;color:var(--muted);z-index:50}
+
+/* ── layout helpers ── */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center}
+.two.wide{grid-template-columns:1.15fr .85fr}
+.two.narrow{grid-template-columns:.85fr 1.15fr}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.four{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.gap{gap:22px}
+
+.card{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:20px 22px}
+.card h3{font-size:15px;font-weight:700;margin-bottom:7px}
+.card p{font-size:13.5px;color:var(--ink2);line-height:1.55}
+.card .n{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--s1);margin-bottom:9px}
+
+.stat{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:18px 20px}
+.stat .v{font-size:clamp(26px,3.2vw,42px);font-weight:750;letter-spacing:-.02em;line-height:1}
+.stat .k{font-size:12.5px;color:var(--ink2);margin-top:7px;line-height:1.4}
+.stat .s{font-size:11.5px;color:var(--muted);margin-top:5px}
+.v.pos{color:var(--goodtx)} .v.neg{color:var(--crit)}
+
+ul.pts{list-style:none;display:flex;flex-direction:column;gap:13px}
+ul.pts li{font-size:15px;color:var(--ink2);line-height:1.5;padding-left:26px;position:relative}
+ul.pts li:before{content:"";position:absolute;left:0;top:8px;width:9px;height:9px;border-radius:3px;background:var(--s1)}
+ul.pts li.no:before{background:var(--crit)}
+ul.pts li.yes:before{background:var(--s3)}
+
+table.fin{width:100%;border-collapse:collapse;font-size:14px}
+table.fin td{padding:9px 4px;border-bottom:1px solid var(--grid);color:var(--ink2)}
+table.fin td:first-child{color:var(--ink)}
+table.fin td:last-child{text-align:right;font-variant-numeric:tabular-nums;font-weight:650;color:var(--ink)}
+table.fin tr.tot td{border-bottom:none;border-top:2px solid var(--rule);font-weight:750;padding-top:11px;font-size:15px}
+td.neg{color:var(--crit)!important}
+
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+     padding:3px 10px;border-radius:20px;border:1px solid var(--border);color:var(--ink2)}
+.tag.a{background:var(--good);border-color:var(--good);color:#fff}
+.tag.b{background:var(--s1);border-color:var(--s1);color:#fff}
+
+/* interactive bits */
+.toggle{display:inline-flex;gap:5px;background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:4px}
+.toggle button{border:none;background:none;padding:8px 16px;border-radius:7px;font-size:13.5px;font-weight:650;color:var(--ink2)}
+.toggle button.on{background:var(--s1);color:#fff}
+input[type=range]{width:100%;accent-color:var(--s1)}
+.rlbl{display:flex;justify-content:space-between;font-size:12px;color:var(--ink2);margin-bottom:5px}
+.rlbl b{color:var(--ink);font-variant-numeric:tabular-nums}
+
+.band{margin-top:9px}
+.bandtrack{position:relative;height:9px;border-radius:5px;background:var(--grid)}
+.bandfill{position:absolute;top:0;bottom:0;border-radius:5px;background:var(--s1);opacity:.32}
+.bandmark{position:absolute;top:-3px;width:3px;height:15px;border-radius:2px;background:var(--s1)}
+.bandnums{display:flex;justify-content:space-between;font-size:12px;color:var(--ink2);margin-top:6px;font-variant-numeric:tabular-nums}
+.bandnums b{color:var(--ink)}
+.bandcap{display:flex;justify-content:space-between;font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+
+svg.c{display:block;width:100%;overflow:visible}
+.tk{font-size:10.5px;fill:var(--muted)}
+.gl{stroke:var(--grid);stroke-width:1}
+.bl{stroke:var(--rule);stroke-width:1}
+.legend{display:flex;gap:16px;font-size:12px;color:var(--ink2);margin-bottom:8px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+
+.flow{display:flex;align-items:stretch;gap:0}
+.flow .step{flex:1;background:var(--card);border:1px solid var(--border);padding:16px 16px;position:relative}
+.flow .step:first-child{border-radius:13px 0 0 13px}
+.flow .step:last-child{border-radius:0 13px 13px 0}
+.flow .step+.step{border-left:none}
+.flow .step .num{font-size:11px;font-weight:700;color:var(--s1);letter-spacing:.1em}
+.flow .step h4{font-size:14px;font-weight:700;margin:6px 0 5px}
+.flow .step p{font-size:12.5px;color:var(--ink2);line-height:1.5}
+
+.mini{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:16px 18px}
+.minirow{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--grid);font-size:13.5px}
+.minirow:last-child{border-bottom:none}
+.minirow .l{font-weight:650}
+.minirow .m{color:var(--ink2);font-size:12.5px}
+.minirow .r{font-variant-numeric:tabular-nums;font-weight:700}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.chips button{font-size:12px;font-weight:650;padding:6px 12px;border-radius:8px;border:1px solid var(--border);background:none;color:var(--ink2)}
+.chips button.on{background:var(--s1);border-color:var(--s1);color:#fff}
+
+.quote{border-left:3px solid var(--s1);padding-left:20px}
+.quote p{font-size:clamp(17px,1.8vw,24px);line-height:1.45;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+.quote .who{font-size:13px;color:var(--muted);margin-top:12px}
+
+.fine{font-size:10.5px;color:var(--muted);line-height:1.55}
+
+/* ── print / PDF ── */
+@media print{
+  @page{size:1280px 720px;margin:0}
+  html,body{height:auto;overflow:visible;background:#fff}
+  #stage{position:static;display:block}
+  .slide{position:relative;display:flex!important;opacity:1!important;
+         width:1280px;height:720px;page-break-after:always;break-after:page;padding:48px 60px 52px}
+  .slide:last-child{page-break-after:auto}
+  .nav,.hint,.progress{display:none!important}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="prog"></div>
+<div id="stage"></div>
+<div class="nav">
+  <button id="pv" title="Previous">‹</button>
+  <button id="nx" title="Next">›</button>
+</div>
+<div class="hint">← → or click to navigate · P to print</div>
+
+<script>
+(function(){
+"use strict";
+var M = function(n){var g=n<0;n=Math.abs(n);var s=n>=1e6?"$"+(n/1e6).toFixed(2)+"M":n>=1000?"$"+Math.round(n/1000)+"K":"$"+Math.round(n);return (g?"−":"")+s;};
+var M0 = function(n){return (n<0?"−$":"$")+Math.abs(Math.round(n)).toLocaleString("en-US");};
+var P = function(n){return n.toFixed(1)+"%";};
+
+/* real figures, carried straight from the underwriting in the portal catalogue */
+var DEALS = [
+ {id:"SGC-008",addr:"200 block of W 52nd St",area:"South LA (Vermont-Slauson) 90037",strat:"Fix & flip",grade:"B+",gcls:"b",
+  cap:171782,profit:99468,inv:71689,ret:41.7,down:-2.3,up:55.1,mo:6,exit:700000,nb:4},
+ {id:"SGC-001",addr:"1400 block of Courtland Ave",area:"Pico-Union 90006",strat:"Multifamily",grade:"B",gcls:"b",
+  cap:348483,profit:135239,inv:107213,ret:30.8,down:-6.4,up:40.3,mo:18,exit:900000,nb:6},
+ {id:"SGC-003",addr:"1100 block of Spring St",area:"Riverside 92507",strat:"Multifamily",grade:"B+",gcls:"b",
+  cap:276032,profit:57654,inv:53608,ret:19.4,down:-23.0,up:34.1,mo:24,exit:1050000,nb:7},
+ {id:"SGC-002",addr:"4900 block of Lennox Blvd",area:"Inglewood / Lennox 90304",strat:"Multifamily",grade:"A−",gcls:"a",
+  cap:553770,profit:80616,inv:80616,ret:14.6,down:-25.8,up:27.7,mo:24,exit:1850000,nb:6},
+ {id:"SGC-017",addr:"8500 block of Remick Ave",area:"Sun Valley 91352",strat:"ADU / development",grade:"B+",gcls:"b",
+  cap:496060,profit:61390,inv:54878,ret:11.1,down:-18.9,up:19.9,mo:12,exit:1330000,nb:6}
+];
+
+function bandHtml(d){
+  var lo=Math.min(d.down,0), hi=Math.max(d.up,1), sp=hi-lo||1;
+  var x=function(v){return ((v-lo)/sp)*100;};
+  return '<div class="band"><div class="bandcap"><span>Downside</span><span>Base</span><span>Upside</span></div>'+
+   '<div class="bandtrack"><div class="bandfill" style="left:'+x(d.down)+'%;width:'+Math.max(x(d.up)-x(d.down),1)+'%"></div>'+
+   '<div class="bandmark" style="left:calc('+x(d.ret)+'% - 1.5px)"></div></div>'+
+   '<div class="bandnums"><span>'+P(d.down)+'</span><b>'+P(d.ret)+'</b><span>'+P(d.up)+'</span></div></div>';
+}
+
+/* simple bar chart used on a couple of slides */
+function bars(labels, series, fmt){
+  fmt=fmt||M;
+  var W=560,H=230,L=58,R=8,T=8,B=46,pw=W-L-R,ph=H-T-B;
+  var max=0; series.forEach(function(s){s.data.forEach(function(v){if(Math.abs(v)>max)max=Math.abs(v);});});
+  var p=Math.pow(10,Math.floor(Math.log10(max||1))),n=(max||1)/p;
+  max=(n<=1?1:n<=2?2:n<=2.5?2.5:n<=5?5:10)*p;
+  var neg=series.some(function(s){return s.data.some(function(v){return v<0;});});
+  var zero=neg?T+ph*0.72:T+ph;
+  var scale=neg?ph*0.72:ph;
+  var o='<svg class="c" viewBox="0 0 '+W+' '+H+'">';
+  for(var g=0;g<=4;g++){var y=T+ph-ph*g/4;o+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+y+'" y2="'+y+'" class="gl"/>';}
+  var band=pw/labels.length, inner=Math.min(band*.62,96), bw=inner/series.length-3;
+  labels.forEach(function(lab,i){
+    var x0=L+band*i+(band-inner)/2;
+    series.forEach(function(s,si){
+      var v=s.data[i]||0, h=Math.abs(v)/max*scale;
+      var y=v>=0?zero-h:zero;
+      o+='<rect x="'+(x0+si*(bw+3))+'" y="'+y+'" width="'+bw+'" height="'+Math.max(h,2)+'" rx="4" fill="'+s.color+'"/>';
+      o+='<text x="'+(x0+si*(bw+3)+bw/2)+'" y="'+(v>=0?y-7:y+h+15)+'" text-anchor="middle" class="tk" style="font-weight:700;fill:'+(v<0?"var(--crit)":"var(--ink2)")+'">'+fmt(v)+'</text>';
+    });
+    var w=String(lab).split("|");
+    o+='<text x="'+(x0+inner/2)+'" y="'+(T+ph+18)+'" text-anchor="middle" class="tk">'+w[0]+'</text>';
+    if(w[1])o+='<text x="'+(x0+inner/2)+'" y="'+(T+ph+31)+'" text-anchor="middle" class="tk">'+w[1]+'</text>';
+  });
+  o+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+zero+'" y2="'+zero+'" class="bl"/></svg>';
+  return o;
+}
+
+/* ══════════════ SLIDES ══════════════ */
+var S=[];
+var FOOT="Solid Ground Capital · Confidential · For discussion with prospective investors only";
+
+S.push({dark:true,html:
+ '<div class="body"><div style="max-width:78%">'+
+ '<div class="slabel">Solid Ground Capital</div>'+
+ '<h1 class="big">The contractor is the investor.</h1>'+
+ '<p class="lead" style="margin-top:22px;font-size:20px">A $3,000,000 real estate fund built on one structural advantage: '+
+ 'we are a licensed Los Angeles general contractor buying, renovating and holding our own projects — '+
+ 'so the margin a contractor normally takes stays in the deal.</p>'+
+ '<div class="four" style="margin-top:38px;max-width:88%">'+
+ '<div class="stat"><div class="v">20–35%</div><div class="k">below-market construction cost</div></div>'+
+ '<div class="stat"><div class="v">$3.0M</div><div class="k">target fund size</div></div>'+
+ '<div class="stat"><div class="v">23</div><div class="k">deals underwritten this week</div></div>'+
+ '<div class="stat"><div class="v">5</div><div class="k">cleared for investment</div></div>'+
+ '</div></div></div>'});
+
+S.push({html:
+ '<div class="slabel">The thesis</div>'+
+ '<div class="body"><div class="quote" style="max-width:82%">'+
+ '<p>Most real estate investors buy a property and then hire someone to fix it. '+
+ 'We already own the crews. That single difference decides whether a marginal deal is a loss or a profit — '+
+ 'and in this market, most deals are marginal.</p>'+
+ '<div class="who">Javad, Principal — Solid Ground Construction</div></div></div>'});
+
+S.push({top:true,html:
+ '<div class="slabel">The problem</div>'+
+ '<h2 class="t">Los Angeles is picked over. The spread has moved to whoever can build cheapest.</h2>'+
+ '<div class="body"><div class="two gap">'+
+ '<ul class="pts">'+
+ '<li class="no"><b>Entry prices haven\'t fallen as fast as exits.</b> Across the submarkets we track, sold medians are down 5–13% year over year while sellers still list at last year\'s expectations.</li>'+
+ '<li class="no"><b>Construction is the largest single cost</b> in a value-add deal, and the one most investors have no control over. A bid comes in 30% high and the deal simply dies.</li>'+
+ '<li class="no"><b>Everyone is hunting the same MLS inventory,</b> so the visible discounts are gone before an investor without a crew can even price the work.</li>'+
+ '</ul>'+
+ '<div class="card"><div class="n">What that means</div>'+
+ '<p style="font-size:15px;line-height:1.6">A passive buyer needs the market to rise to make money. '+
+ 'We need only to build for less than the person we bought from could have. '+
+ 'One of those is a forecast. The other is an operating fact.</p></div>'+
+ '</div></div>'});
+
+S.push({top:true,html:
+ '<div class="slabel">The edge</div>'+
+ '<h2 class="t">The same renovation, priced two ways</h2>'+
+ '<p class="lead">Solid Ground self-performs demolition, framing, MEP, finishes and ADU construction with in-house crews and direct supplier accounts. Investors are not paying a general contractor\'s margin on top of the work.</p>'+
+ '<div class="body"><div class="two gap" style="align-items:start">'+
+ '<div>'+bars(["Light|~1,200 sf","Medium|~1,500 sf","Heavy|~1,800 sf"],[
+   {name:"Market GC",color:"var(--s2)",data:[45000,86000,152000]},
+   {name:"At SGC cost",color:"var(--s1)",data:[30000,60000,117000]}])+
+ '<div class="legend" style="margin-top:6px"><span><i style="background:var(--s2)"></i>Typical market GC bid</span><span><i style="background:var(--s1)"></i>Solid Ground self-performed</span></div></div>'+
+ '<div class="card"><div class="n">Why the gap is durable</div>'+
+ '<p style="font-size:14.5px;line-height:1.6">It is not a discount we negotiate deal by deal — it is the absence of a markup. '+
+ 'The team that prices the renovation is the team that performs it, so there is no contractor margin, no bid padding for unknowns, '+
+ 'and no change-order surprise when the walls open up.</p>'+
+ '<p style="font-size:14.5px;line-height:1.6;margin-top:12px">The same crews are already working in these neighbourhoods every day, '+
+ 'which is also where a good deal of our off-market deal flow comes from.</p></div>'+
+ '</div></div>'});
+
+S.push({top:true,id:"cost",html:
+ '<div class="slabel">The edge, in one live deal</div>'+
+ '<h2 class="t">Sun Valley ADU project — the cost advantage <i>is</i> the deal</h2>'+
+ '<p class="lead">A house on an oversized lot in Sun Valley: renovate the home and build a detached ADU, then sell as a two-unit property against verified $1.2M comparable sales. Same purchase price, same exit. Only the construction cost changes.</p>'+
+ '<div class="body"><div class="two gap" style="align-items:start">'+
+ '<div><div class="toggle" id="costToggle" style="margin-bottom:16px">'+
+ '<button class="on" data-c="sgc">Built by Solid Ground</button><button data-c="mkt">Built by a market GC</button></div>'+
+ '<table class="fin" id="costTable"></table></div>'+
+ '<div><div class="stat" style="padding:24px"><div class="v" id="costV">$61,390</div>'+
+ '<div class="k" id="costK">project profit, built at Solid Ground cost</div>'+
+ '<div class="s" id="costS">Purchase $815,000 · exit $1,330,000 · 12 months</div></div>'+
+ '<p class="lead" style="font-size:14px;margin-top:16px" id="costNote">Renovation and ADU together cost $255,000 at our own cost. The deal clears.</p></div>'+
+ '</div></div>'});
+
+S.push({top:true,html:
+ '<div class="slabel">Discipline</div>'+
+ '<h2 class="t">A written buy box, applied to every deal, every day</h2>'+
+ '<div class="body"><div class="four" style="margin-bottom:26px">'+
+ '<div class="stat"><div class="v">70%</div><div class="k">maximum offer as a share of after-repair value, minus renovation</div></div>'+
+ '<div class="stat"><div class="v">$75K</div><div class="k">minimum projected profit or the deal is passed</div></div>'+
+ '<div class="stat"><div class="v">$250K</div><div class="k">per-unit ceiling in LA County for multifamily</div></div>'+
+ '<div class="stat"><div class="v">$175K</div><div class="k">per-unit ceiling in the Inland Empire</div></div>'+
+ '</div>'+
+ '<p class="lead" style="max-width:78ch">These are not aspirations, they are filters. Every listing the sourcing engine finds is scored against them '+
+ 'automatically before a human looks at it, and the ones that fail are dropped. Financing is underwritten at hard money of '+
+ '11.5% plus 2.5 points and refinanced at a 6.75% debt-service-coverage rate — the terms we actually get, not the ones that make a model look good.</p>'+
+ '</div>'});
+
+S.push({top:true,html:
+ '<div class="slabel">The platform</div>'+
+ '<h2 class="t">Deal Scout — the sourcing engine runs before we wake up</h2>'+
+ '<p class="lead">Every weekday at 6:00 AM an automated agent sweeps Los Angeles County and the Inland Empire, underwrites everything it finds against the buy box, and publishes a graded board. Nothing about this is manual, and nothing is skipped on a busy week.</p>'+
+ '<div class="body"><div class="flow">'+
+ '<div class="step"><div class="num">01</div><h4>Sweep</h4><p>Listings, probate filings, notices of default, code-violation and rent-escrow lists across every target submarket.</p></div>'+
+ '<div class="step"><div class="num">02</div><h4>Underwrite</h4><p>After-repair value, renovation at our cost, maximum allowable offer, spread, price per unit and cap rate — computed on every property.</p></div>'+
+ '<div class="step"><div class="num">03</div><h4>Verify</h4><p>Sold comparables pulled for the strongest candidates. Grades move up or down on what the comps actually say.</p></div>'+
+ '<div class="step"><div class="num">04</div><h4>Grade</h4><p>A to D against the buy box. D is a pass. Only comp-verified deals reach investors.</p></div>'+
+ '<div class="step"><div class="num">05</div><h4>Publish</h4><p>The board and the investor portal refresh together, every weekday morning.</p></div>'+
+ '</div></div>'});
+
+S.push({top:true,id:"funnel",html:
+ '<div class="slabel">This week</div>'+
+ '<h2 class="t">23 properties underwritten. 5 cleared.</h2>'+
+ '<div class="body"><div class="two gap" style="align-items:center">'+
+ '<div>'+bars(["Underwritten","Passed the|buy box","Comp-|verified","Offered to|investors"],[
+   {name:"Deals",color:"var(--s1)",data:[23,14,5,5]}],function(v){return String(v);})+'</div>'+
+ '<div><ul class="pts">'+
+ '<li class="no"><b>9 dropped on the numbers.</b> Negative spread at list, or a maximum offer so far below the ask that no negotiation closes it.</li>'+
+ '<li class="no"><b>9 held back after comp review.</b> The comparable sales did not support the assumed exit, or the margin would not clear a preferred return.</li>'+
+ '<li class="yes"><b>5 cleared for investment.</b> Comp-verified, inside the buy box, with a downside case we are willing to show you.</li>'+
+ '</ul>'+
+ '<p class="lead" style="margin-top:18px;font-size:14px">The ratio matters more than the count. A pipeline that produces five investable deals out of twenty-three is doing its job. One that clears twenty is not underwriting.</p>'+
+ '</div></div></div>'});
+
+S.push({top:true,id:"comps",html:
+ '<div class="slabel">Why comps decide the grade</div>'+
+ '<h2 class="t">The comparable sales overrule us — in both directions</h2>'+
+ '<p class="lead">Grading is not a marketing exercise. Two deals from this week moved on what the comps said, and one of them moved down.</p>'+
+ '<div class="body"><div class="two gap">'+
+ '<div class="card" style="border-color:var(--good)"><div class="n" style="color:var(--goodtx)">Upgraded · B+ → A−</div>'+
+ '<h3>4900 block of Lennox Blvd — 8 units</h3>'+
+ '<p style="margin-top:8px">At $187.5K per unit against a $231K submarket average, and below the $206K per unit the nearest 8-unit sale fetched at full asking price. '+
+ 'It is the only deal on the board priced clearly below its own comp set.</p>'+
+ '<p style="margin-top:10px"><b>What we still tell you:</b> the submarket is down about 12% and rents down 3–5%. This is a buy-the-dip hold into 2028, not a quick flip.</p></div>'+
+ '<div class="card" style="border-color:var(--serious)"><div class="n" style="color:var(--serious)">Downgraded · A− → B</div>'+
+ '<h3>1400 block of Courtland Ave — 4 units</h3>'+
+ '<p style="margin-top:8px">The headline $137K per unit looked like a steep discount. The comps showed why it wasn\'t: the units average about 520 square feet. '+
+ 'On a per-square-foot basis it costs $263 against $161–180 for every stabilised sale we could find nearby.</p>'+
+ '<p style="margin-top:10px"><b>Still worth pursuing</b> — we can cure the code violations more cheaply than any competing buyer — but the discount has to be negotiated, not assumed.</p></div>'+
+ '</div></div>'});
+
+S.push({top:true,html:
+ '<div class="slabel">Discipline</div>'+
+ '<h2 class="t">What we passed on this week</h2>'+
+ '<p class="lead">The deals we decline say more about how your capital will be treated than the ones we like.</p>'+
+ '<div class="body"><div class="three">'+
+ '<div class="card"><div class="n" style="color:var(--crit)">Passed</div><h3>Arleta — house on an 11,370 sf lot</h3>'+
+ '<p style="margin-top:8px">The ADU premium is real and comp-verified at $300–450K. But at any price the seller would accept, the build cost and 14-month carry left too little to clear an 8% preferred return. '+
+ 'It may still be a fine deal for our own book. It is not one we will syndicate.</p></div>'+
+ '<div class="card"><div class="n" style="color:var(--crit)">Passed</div><h3>West Long Beach — 2/1 cottage</h3>'+
+ '<p style="margin-top:8px">Negative spread at the asking price before a single cost. The zip is down 10.5% year over year with the 710 freeway and refinery permanently capping the exit. No amount of construction advantage fixes that.</p></div>'+
+ '<div class="card"><div class="n" style="color:var(--crit)">Passed</div><h3>Barstow — 12 units at $106K a door</h3>'+
+ '<p style="margin-top:8px">The cheapest doors of the entire sweep, and still a pass. A tertiary market with a depopulating base and no exit liquidity is a yield trap: cheap to buy, impossible to sell.</p></div>'+
+ '</div></div>'});
+
+S.push({top:true,id:"board",html:
+ '<div class="slabel">The current board</div>'+
+ '<h2 class="t">Five deals, with the downside shown first</h2>'+
+ '<p class="lead">Projected return on investor capital under three cases: a downside where we pay full asking price, the exit lands 7% under the comped value and renovation runs 15% over; a base case; and an upside. No case assumes appreciation or rent growth.</p>'+
+ '<div class="body"><div class="mini" id="boardList"></div></div>'});
+
+S.push({top:true,id:"calc",html:
+ '<div class="slabel">How a deal is underwritten</div>'+
+ '<h2 class="t">Move the purchase price and watch the deal live</h2>'+
+ '<p class="lead">This is the same engine behind every number in this presentation, running on the South LA probate flip. Entry price is the whole game — which is why we buy at our maximum allowable offer or walk.</p>'+
+ '<div class="body"><div class="two gap" style="align-items:start">'+
+ '<div><div class="rlbl"><span>Purchase price</span><b id="cpV">$455,000</b></div>'+
+ '<input type="range" id="cp" min="400000" max="540000" step="5000" value="455000">'+
+ '<div class="rlbl" style="margin-top:18px"><span>Renovation at SGC cost</span><b id="crV">$60,000</b></div>'+
+ '<input type="range" id="cr" min="40000" max="110000" step="2500" value="60000">'+
+ '<div class="rlbl" style="margin-top:18px"><span>Sale price after renovation</span><b id="caV">$700,000</b></div>'+
+ '<input type="range" id="ca" min="620000" max="780000" step="5000" value="700000">'+
+ '<p class="fine" style="margin-top:20px">Hard money at 11.5% plus 2.5 points on 85% of purchase · 6-month hold · '+
+ '1.5% buy closing · $800 a month carry · 6% selling costs · 8% preferred return then a 70/30 split.</p></div>'+
+ '<div><div class="three" style="grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">'+
+ '<div class="stat"><div class="v" id="oProfit" style="font-size:30px">$99K</div><div class="k">project profit</div></div>'+
+ '<div class="stat"><div class="v" id="oRet" style="font-size:30px">41.7%</div><div class="k">return on your capital</div></div></div>'+
+ '<table class="fin" id="calcT"></table>'+
+ '<div id="calcFlag" style="margin-top:12px;font-size:13px;font-weight:650"></div></div>'+
+ '</div></div>'});
+
+S.push({top:true,html:
+ '<div class="slabel">Deal spotlight</div>'+
+ '<h2 class="t">South LA probate flip <span class="tag b" style="vertical-align:6px">B+</span></h2>'+
+ '<p class="lead">A 4-bed Craftsman on an R2 lot, coming through probate. Renovated three-bedrooms in this zip printed $660K–$748K over the last eight months; this one needs only $467 per square foot to clear a $700K exit.</p>'+
+ '<div class="body"><div class="two gap" style="align-items:start">'+
+ '<table class="fin">'+
+ '<tr><td>Sale price after renovation</td><td>$700,000</td></tr>'+
+ '<tr><td>Purchase at our target price</td><td class="neg">−$455,000</td></tr>'+
+ '<tr><td>Renovation at SGC cost</td><td class="neg">−$60,000</td></tr>'+
+ '<tr><td>Loan points and interest</td><td class="neg">−$31,907</td></tr>'+
+ '<tr><td>Closing and carrying costs</td><td class="neg">−$11,625</td></tr>'+
+ '<tr><td>Selling costs</td><td class="neg">−$42,000</td></tr>'+
+ '<tr class="tot"><td>Project profit</td><td>$99,468</td></tr>'+
+ '<tr class="tot"><td>Your share, 6 months</td><td>$71,689</td></tr></table>'+
+ '<div><div class="card"><div class="n">Why it works</div>'+
+ '<p>The R2 lot is the safety net. If the resale market softens further we add a second unit and hold instead of selling — the deal has two exits, not one.</p></div>'+
+ '<div class="card" style="margin-top:14px;border-color:var(--serious)"><div class="n" style="color:var(--serious)">What could go wrong</div>'+
+ '<p>The zip\'s sold median fell 13% year over year, so the exit has to be quick and priced to sell at $699K rather than $749K. Probate status needs verifying — a 2025 cycle on this property drew a court overbid. And the entry has to land near $455K; at the $500K asking price the profit falls to $50K and the deal stops clearing our own buy box.</p></div></div>'+
+ '</div></div>'});
+
+S.push({top:true,html:
+ '<div class="slabel">Deal spotlight</div>'+
+ '<h2 class="t">Lennox 8-unit reposition <span class="tag a" style="vertical-align:6px">A−</span></h2>'+
+ '<p class="lead">The one deal on the board priced clearly below its comparable set — and the clearest illustration of why we show downside first.</p>'+
+ '<div class="body"><div class="two gap" style="align-items:start">'+
+ '<div><ul class="pts">'+
+ '<li class="yes"><b>$187.5K per unit</b> against a $231K submarket average across 460 units traded in the last twelve months.</li>'+
+ '<li class="yes"><b>Outside Inglewood rent control.</b> Lennox is unincorporated LA County, so rents can be brought to market on turnover — subject to confirming parcel jurisdiction in escrow.</li>'+
+ '<li class="yes"><b>Room for up to four ADUs,</b> which is where our construction cost compounds the return rather than merely protecting it.</li>'+
+ '<li class="no"><b>The market is falling now.</b> Prices down about 12%, rents down 3–5% as the stadium premium deflates.</li>'+
+ '</ul></div>'+
+ '<div><div class="stat" style="margin-bottom:12px"><div class="v">−25.8% <span style="font-size:18px;color:var(--ink2);font-weight:650">to</span> +27.7%</div>'+
+ '<div class="k">the honest range of outcomes on $553,770 of capital over 24 months</div>'+
+ '<div class="s">base case +14.6%</div></div>'+
+ '<div class="card"><div class="n">Our recommendation</div>'+
+ '<p>Underwrite this as a 24-month hold with an ADU build in year two. The below-market basis is the protection; '+
+ 'the rent reposition and the added doors are the return. If you need your capital back inside a year, this is the wrong deal — the flip on the previous slide is the right one.</p></div></div>'+
+ '</div></div>'});
+
+S.push({top:true,html:
+ '<div class="slabel">Deal flow</div>'+
+ '<h2 class="t">The best margins never reach the MLS</h2>'+
+ '<p class="lead">The listed market is where everyone competes. Five of our eight sourcing channels cost effectively nothing and produce deals nobody else has priced yet.</p>'+
+ '<div class="body"><div class="three" style="gap:14px">'+
+ '<div class="card"><div class="n">Automated daily</div><h3>Probate &amp; trust filings</h3><p>Public court records name the estate property and the representative before anything lists. Estates want simple, as-is, no repairs — which is exactly what a contractor can offer.</p></div>'+
+ '<div class="card"><div class="n">Automated daily</div><h3>Pre-foreclosure notices</h3><p>Notices of default are recorded 90+ days before auction. The owner can still sell and keep their equity. We solve a real problem rather than wait for the courthouse steps.</p></div>'+
+ '<div class="card"><div class="n">Our structural edge</div><h3>Code violations &amp; rent escrow</h3><p>The City of LA publishes buildings whose owners are losing rent to escrow over unresolved violations. A licensed GC is the one buyer who can actually fix what put them there.</p></div>'+
+ '<div class="card"><div class="n">The moat</div><h3>Our own job-site network</h3><p>Crews, subs, suppliers and past clients are driving these neighbourhoods every day and see distress months before the market does. No competing fund has a field team already on the ground.</p></div>'+
+ '<div class="card"><div class="n">At scale</div><h3>Targeted direct mail</h3><p>Absentee owners, 15+ years of ownership, pre-1980 builds, inside the buy-box zips. The licensed-contractor letter outperforms the generic cash-buyer postcard.</p></div>'+
+ '<div class="card"><div class="n">Compounding</div><h3>Agent pocket listings</h3><p>Every agent the system contacts becomes a relationship. Close one deal and you are on their call-before-it-lists shortlist for the next.</p></div>'+
+ '</div></div>'});
+
+S.push({top:true,html:
+ '<div class="slabel">The platform</div>'+
+ '<h2 class="t">You watch your money the same way we do</h2>'+
+ '<p class="lead">Members get a private, encrypted portal — not a quarterly PDF. It refreshes every weekday morning with the same sweep that drives our own decisions.</p>'+
+ '<div class="body"><div class="four">'+
+ '<div class="card"><div class="n">Search</div><h3>Every live deal</h3><p>Filter by strategy, region, capital required, target return, hold length and area score. Open the full underwriting on any deal.</p></div>'+
+ '<div class="card"><div class="n">Analyse</div><h3>The whole file</h3><p>Downside, base and upside cases, the comparable sales with sources, the risks, our recommendation and three structure options — before you commit anything.</p></div>'+
+ '<div class="card"><div class="n">Track</div><h3>Your projects</h3><p>Live construction progress, budget against actual by trade category, milestone dates and distributions — on the projects your capital is actually in.</p></div>'+
+ '<div class="card"><div class="n">Private</div><h3>Encrypted per member</h3><p>Your holdings are encrypted under your own passphrase and decrypted only in your browser. Other members cannot read your position. Nor can anyone who finds the page.</p></div>'+
+ '</div>'+
+ '<p class="lead" style="margin-top:22px;font-size:14.5px">When a deal interests you, one button asks us for the full package: the exact address, the complete comparable-sales file, the line-item construction budget and the underwriting model — and we walk the numbers with you before anything is signed.</p>'+
+ '</div>'});
+
+S.push({top:true,id:"struct",html:
+ '<div class="slabel">Structure</div>'+
+ '<h2 class="t">Three ways to participate</h2>'+
+ '<p class="lead">Illustrated on the South LA flip — $171,782 of capital over six months, with a $99,468 project profit in the base case.</p>'+
+ '<div class="body"><div class="three">'+
+ '<div class="card" style="border-color:var(--s1)"><div class="n">Most common</div><h3>8% preferred, then 70/30</h3>'+
+ '<div style="font-size:32px;font-weight:750;margin:10px 0 4px">$71,689</div>'+
+ '<p style="font-size:12.5px;color:var(--muted)">41.7% on capital · 83.5% a year</p>'+
+ '<p style="margin-top:10px">You are paid an 8% preferred return before Solid Ground takes anything, then 70% of what remains. We earn most when you do.</p></div>'+
+ '<div class="card"><div class="n">Simplest</div><h3>Fixed note at 11%</h3>'+
+ '<div style="font-size:32px;font-weight:750;margin:10px 0 4px">$9,448</div>'+
+ '<p style="font-size:12.5px;color:var(--muted)">5.5% on capital · 11.0% a year</p>'+
+ '<p style="margin-top:10px">You lend in first position at a fixed rate, secured by the property. Predictable, no exposure to project outcome — and no share of the upside.</p></div>'+
+ '<div class="card"><div class="n">Aligned</div><h3>50 / 50 joint venture</h3>'+
+ '<div style="font-size:32px;font-weight:750;margin:10px 0 4px">$49,734</div>'+
+ '<p style="font-size:12.5px;color:var(--muted)">28.9% on capital · 57.9% a year</p>'+
+ '<p style="margin-top:10px">Straight partnership, profit split down the middle from the first dollar. No preferred return, no waterfall to argue about.</p></div>'+
+ '</div>'+
+ '<p class="fine" style="margin-top:20px">Returns shown are projections for a single illustrative project in its base case, not a fund-level return, and not a guarantee. The downside case for this deal is −2.3%.</p>'+
+ '</div>'});
+
+S.push({top:true,html:
+ '<div class="slabel">Risk</div>'+
+ '<h2 class="t">How your capital is protected — and where it is genuinely at risk</h2>'+
+ '<div class="body"><div class="two gap" style="align-items:start">'+
+ '<div><div class="card"><div class="n" style="color:var(--goodtx)">Protections</div>'+
+ '<ul class="pts" style="margin-top:6px">'+
+ '<li class="yes"><b>A project-level LLC with recorded title.</b> Funds are held in a project account and released against construction milestones, not advanced in a lump sum.</li>'+
+ '<li class="yes"><b>Entry discipline.</b> The 70% rule means the margin of safety is bought, not hoped for. If we cannot buy at that price we do not buy.</li>'+
+ '<li class="yes"><b>Two exits underwritten on every deal</b> — sell, or rent and refinance — so a soft resale market does not force a sale.</li>'+
+ '<li class="yes"><b>Monthly reporting with photographs,</b> budget against actual, and the same portal we use internally.</li>'+
+ '</ul></div></div>'+
+ '<div><div class="card" style="border-color:var(--serious)"><div class="n" style="color:var(--serious)">Real risks</div>'+
+ '<ul class="pts" style="margin-top:6px">'+
+ '<li class="no"><b>Prices are falling in most of our submarkets.</b> Down 5–13% year over year. Our downside cases assume they keep falling; they may fall further.</li>'+
+ '<li class="no"><b>Real estate is illiquid.</b> Capital is committed for the length of a project — 6 to 24 months — and cannot be withdrawn on demand.</li>'+
+ '<li class="no"><b>Construction carries schedule risk</b> even self-performed. Permits, inspections and hidden conditions extend timelines and every extra month costs carry.</li>'+
+ '<li class="no"><b>Loss of principal is possible.</b> Our downside case on the Lennox deal is −25.8%. That is a real number, not a formality.</li>'+
+ '</ul></div></div>'+
+ '</div></div>'});
+
+S.push({dark:true,top:true,html:
+ '<div class="slabel">The ask</div>'+
+ '<h2 class="t" style="font-size:clamp(28px,3.4vw,46px)">$3,000,000, deployed into deals that already exist</h2>'+
+ '<div class="body"><div class="two gap wide" style="align-items:start">'+
+ '<div><ul class="pts">'+
+ '<li><b>Minimum commitment $100,000,</b> callable in tranches as deals close rather than drawn up front.</li>'+
+ '<li><b>8% preferred return</b> accruing from the date your capital is called, then a 70/30 split of profit in your favour.</li>'+
+ '<li><b>Deployment inside 90 days.</b> Five comp-verified deals are on the board today and the sweep adds more every weekday — this is not a fund looking for something to buy.</li>'+
+ '<li><b>Quarterly distributions</b> of preferred return, with project profit distributed at each exit.</li>'+
+ '</ul></div>'+
+ '<div class="four" style="grid-template-columns:1fr 1fr;gap:12px">'+
+ '<div class="stat"><div class="v">$1.9M</div><div class="k">capital required by the five deals on the board today</div></div>'+
+ '<div class="stat"><div class="v">6–24</div><div class="k">months, the range of project hold periods</div></div>'+
+ '<div class="stat"><div class="v">8%</div><div class="k">preferred return, paid before we take anything</div></div>'+
+ '<div class="stat"><div class="v">70/30</div><div class="k">profit split in your favour after the preferred</div></div>'+
+ '</div></div></div>'});
+
+S.push({dark:true,html:
+ '<div class="body"><div style="max-width:74%">'+
+ '<div class="slabel">Next steps</div>'+
+ '<h1 class="big" style="font-size:clamp(28px,3.6vw,48px)">Come and look at the board.</h1>'+
+ '<p class="lead" style="margin-top:20px;font-size:18px">The fastest way to judge this is not another deck — it is thirty minutes inside the portal, '+
+ 'walking through the five live deals, their comparable sales and their downside cases. We will issue you credentials before the meeting.</p>'+
+ '<div class="three" style="margin-top:34px">'+
+ '<div class="card"><div class="n">01</div><h3>Portal access</h3><p>Private credentials issued to you, valid immediately. Look at every live deal and its full underwriting.</p></div>'+
+ '<div class="card"><div class="n">02</div><h3>Walk a deal</h3><p>We take you line by line through one deal you choose — comps, budget, downside — with nothing withheld.</p></div>'+
+ '<div class="card"><div class="n">03</div><h3>Documents</h3><p>Offering documents prepared with securities counsel, for review by your own advisers.</p></div>'+
+ '</div>'+
+ '<p class="lead" style="margin-top:32px;font-size:16px"><b>Javad</b> · Principal, Solid Ground Construction<br>'+
+ 'javad@solidgroundconstruction.us · solidgroundconstruction.us</p>'+
+ '</div></div>'});
+
+S.push({html:
+ '<div class="slabel">Important information</div>'+
+ '<div class="body"><div style="max-width:88ch">'+
+ '<p class="fine" style="font-size:12px;line-height:1.75">'+
+ 'This presentation is for discussion purposes only. It is not an offer to sell, nor a solicitation of an offer to buy, any security. '+
+ 'Any offering of interests in Solid Ground Capital will be made only to qualified investors, and only through formal offering documents '+
+ 'prepared with securities counsel, which should be read in full before any investment decision.<br><br>'+
+ 'All returns shown are <b>projections</b> for individual illustrative projects, not fund-level returns, and are not guaranteed. '+
+ 'They are derived from current market comparable sales and Solid Ground\'s in-house construction pricing as of July 2026. '+
+ 'No case assumes property appreciation or rent growth. Actual results will differ, potentially materially. '+
+ 'Downside cases shown are illustrative adverse scenarios, not worst-case outcomes; losses may exceed them.<br><br>'+
+ 'Real estate investment involves substantial risk, including illiquidity, leverage, construction and permitting delay, '+
+ 'and the possible <b>loss of some or all of the capital invested</b>. Property values in several of the submarkets described have declined '+
+ 'between 5% and 13% over the twelve months to July 2026 and may decline further. Past performance of any project is not indicative of future results.<br><br>'+
+ 'Property addresses are shown at block level; exact addresses, complete comparable-sales files and construction budgets are provided '+
+ 'under the diligence process. Comparable sales are drawn from public listing and sales records and have not been independently appraised.<br><br>'+
+ 'Prospective investors should consult their own legal, tax and financial advisers before investing. '+
+ 'Solid Ground Construction is a licensed California general contractor. Nothing herein constitutes legal, tax or investment advice.'+
+ '</p></div></div>'});
+
+/* ══════════════ render & navigation ══════════════ */
+var stage=document.getElementById("stage");
+S.forEach(function(s,i){
+  var d=document.createElement("div");
+  d.className="slide"+(s.dark?" dark":"")+(s.top?" top":"");
+  if(s.id)d.dataset.sid=s.id;
+  d.innerHTML=s.html+'<footer class="bar"><span>'+(s.dark?"Solid Ground Capital":FOOT)+'</span><span>'+(i+1)+" / "+S.length+'</span></footer>';
+  stage.appendChild(d);
+});
+var slides=stage.querySelectorAll(".slide"), cur=0;
+function go(n){
+  cur=Math.max(0,Math.min(slides.length-1,n));
+  slides.forEach(function(el,i){el.classList.toggle("on",i===cur);});
+  document.getElementById("prog").style.width=((cur+1)/slides.length*100)+"%";
+  location.hash=cur+1;
+}
+document.getElementById("nx").addEventListener("click",function(e){e.stopPropagation();go(cur+1);});
+document.getElementById("pv").addEventListener("click",function(e){e.stopPropagation();go(cur-1);});
+document.addEventListener("keydown",function(e){
+  if(e.key==="ArrowRight"||e.key===" "||e.key==="PageDown")go(cur+1);
+  else if(e.key==="ArrowLeft"||e.key==="PageUp")go(cur-1);
+  else if(e.key==="Home")go(0);
+  else if(e.key==="End")go(slides.length-1);
+  else if(e.key==="p"||e.key==="P")window.print();
+});
+stage.addEventListener("click",function(e){
+  if(e.target.closest("input,button,a"))return;
+  go(cur+(e.clientX<innerWidth*0.3?-1:1));
+});
+function fromHash(){var n=parseInt((location.hash||"#1").slice(1),10);return isNaN(n)?0:n-1;}
+window.addEventListener("hashchange",function(){var n=fromHash();if(n!==cur)go(n);});
+go(fromHash());
+
+/* ── slide 5: cost toggle ── */
+var COST={
+ sgc:{rehab:255000,profit:61390,note:"Renovation and ADU together cost $255,000 at our own cost. The deal clears.",cls:""},
+ mkt:{rehab:331500,profit:-15110,note:"At a market general contractor's price the same work costs $331,500. The identical deal — same purchase, same exit — becomes a $15,110 loss.",cls:"neg"}
+};
+function drawCost(k){
+  var c=COST[k];
+  document.getElementById("costTable").innerHTML=
+   '<tr><td>Sale price, house plus ADU</td><td>$1,330,000</td></tr>'+
+   '<tr><td>Purchase</td><td class="neg">−$815,000</td></tr>'+
+   '<tr><td>Renovation and ADU build</td><td class="neg">−'+M0(c.rehab).replace("$","$")+'</td></tr>'+
+   '<tr><td>Loan points and interest</td><td class="neg">−$97,014</td></tr>'+
+   '<tr><td>Closing and carrying costs</td><td class="neg">−$21,825</td></tr>'+
+   '<tr><td>Selling costs</td><td class="neg">−$79,800</td></tr>'+
+   '<tr class="tot"><td>Project profit</td><td class="'+c.cls+'">'+M0(c.profit)+'</td></tr>';
+  var v=document.getElementById("costV");
+  v.textContent=M0(c.profit); v.className="v "+(c.profit<0?"neg":"pos");
+  document.getElementById("costK").textContent=k==="sgc"?"project profit, built at Solid Ground cost":"project profit, built by a market GC";
+  document.getElementById("costNote").innerHTML=c.note;
+}
+document.querySelectorAll("#costToggle button").forEach(function(b){
+  b.addEventListener("click",function(){
+    document.querySelectorAll("#costToggle button").forEach(function(x){x.classList.toggle("on",x===b);});
+    drawCost(b.dataset.c);
+  });
+});
+drawCost("sgc");
+
+/* ── slide 11: the board ── */
+document.getElementById("boardList").innerHTML=DEALS.map(function(d){
+  return '<div class="minirow"><div style="flex:1"><div class="l">'+d.addr+' <span class="tag '+d.gcls+'" style="margin-left:6px">'+d.grade+'</span></div>'+
+   '<div class="m">'+d.area+' · '+d.strat+' · '+d.mo+' months · '+M(d.cap)+' capital</div></div>'+
+   '<div style="width:230px;margin-left:22px">'+bandHtml(d)+'</div></div>';
+}).join("");
+
+/* ── slide 12: live calculator ── */
+function calc(){
+  var price=+document.getElementById("cp").value,
+      rehab=+document.getElementById("cr").value,
+      arv=+document.getElementById("ca").value, mo=6;
+  var loan=price*.85, pts=loan*.025, interest=loan*.115*mo/12,
+      bc=price*.015, hold=800*mo, sell=arv*.06;
+  var cap=(price-loan)+pts+bc+rehab+interest+hold;
+  var profit=arv-price-rehab-pts-interest-bc-hold-sell;
+  var pref=cap*.08*mo/12;
+  var inv=profit<=0?profit:Math.min(profit,pref)+Math.max(0,profit-pref)*.7;
+  var mao=.70*arv-rehab;
+  document.getElementById("cpV").textContent=M0(price);
+  document.getElementById("crV").textContent=M0(rehab);
+  document.getElementById("caV").textContent=M0(arv);
+  var pe=document.getElementById("oProfit"); pe.textContent=M(profit); pe.className="v "+(profit<0?"neg":"");
+  var re=document.getElementById("oRet"); re.textContent=P(cap?inv/cap*100:0); re.className="v "+(inv<0?"neg":"");
+  document.getElementById("calcT").innerHTML=
+   '<tr><td>Sale price after renovation</td><td>'+M0(arv)+'</td></tr>'+
+   '<tr><td>Purchase</td><td class="neg">−'+M0(price)+'</td></tr>'+
+   '<tr><td>Renovation at SGC cost</td><td class="neg">−'+M0(rehab)+'</td></tr>'+
+   '<tr><td>Points, interest, closing, carry</td><td class="neg">−'+M0(pts+interest+bc+hold)+'</td></tr>'+
+   '<tr><td>Selling costs</td><td class="neg">−'+M0(sell)+'</td></tr>'+
+   '<tr class="tot"><td>Your capital</td><td>'+M0(cap)+'</td></tr>'+
+   '<tr class="tot"><td>Your share of profit</td><td class="'+(inv<0?"neg":"")+'">'+M0(inv)+'</td></tr>';
+  document.getElementById("calcFlag").innerHTML = profit>=75000
+    ? '<span style="color:var(--goodtx)">✓ Clears the $75,000 minimum profit'+(price<=mao?' and the 70% maximum offer of '+M0(mao):' — but above the '+M0(mao)+' maximum offer, so we are paying up')+'</span>'
+    : '<span style="color:var(--crit)">✕ Below the $75,000 minimum — negotiate to '+M0(mao)+' or we pass</span>';
+}
+["cp","cr","ca"].forEach(function(id){document.getElementById(id).addEventListener("input",calc);});
+calc();
+})();
+</script>
+</body>
+</html>

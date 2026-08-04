@@ -37,3 +37,16 @@ else's.
 
 catalog.json, roster.json and creds.json are git-ignored — they are the
 plaintext forms and must never be committed.
+
+## deck/ — investor presentation
+
+Published at https://javad-SOLID.github.io/sredeal/deck/ — 21 slides, arrow-key or
+click navigation, live cost-advantage toggle and deal calculator, press P to print.
+A rendered PDF sits alongside it at deck/SGC-Investor-Presentation.pdf.
+
+Unlike the dashboard and the portal this file is NOT encrypted, because it is meant
+to be sent to prospective investors. It contains no exact addresses (block level
+only), no investor names and no portfolio data. It is marked noindex.
+
+To regenerate the PDF after editing deck/index.html, print it to PDF at 1280x720
+with background graphics enabled.
