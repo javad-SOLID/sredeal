@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<script type="application/json" id="cowork-artifact-meta">
+{
+  "name": "Sgc Investment Hub",
+  "schemaVersion": 1,
+  "description": "Solid Ground Capital command center — daily Deal Scout import, leads pipeline, deal underwriting (flip/BRRRR/ADU/wholesale/ground-up), construction projects, crew, partners (agents/lenders/escrow/title/inspectors), agent & off-market deals, loans, inspections, investors, fund financials, and a communications & coordination hub. Save/Load buttons back data up to a JSON file.",
+  "mcpTools": [],
+  "mcpServerNames": []
+}
+</script>
+<html lang="en" data-seed="blank">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="SGC Hub">
+<meta name="format-detection" content="telephone=no">
+<meta name="theme-color" content="#2a78d6">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<title>Solid Ground Capital — Command Center</title>
+<style>
+  :root {
+    color-scheme: light;
+    --surface-1: #fcfcfb;
+    --page: #f9f9f7;
+    --ink-1: #0b0b0b;
+    --ink-2: #52514e;
+    --muted: #898781;
+    --grid: #e1e0d9;
+    --baseline: #c3c2b7;
+    --border: rgba(11,11,11,0.10);
+    --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100;
+    --seq250:#86b6ef; --seq300:#6da7ec; --seq350:#5598e7; --seq400:#3987e5; --seq450:#2a78d6; --seq500:#256abf; --seq550:#1c5cab;
+    --good: #0ca30c; --warning: #fab219; --serious: #ec835a; --critical: #d03b3b;
+    --good-text: #006300;
+    --accent: #2a78d6;
+    --wash: rgba(42,120,214,0.08);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) {
+      color-scheme: dark;
+      --surface-1: #1a1a19;
+      --page: #0d0d0d;
+      --ink-1: #ffffff;
+      --ink-2: #c3c2b7;
+      --muted: #898781;
+      --grid: #2c2c2a;
+      --baseline: #383835;
+      --border: rgba(255,255,255,0.10);
+      --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500;
+      --seq250:#86b6ef; --seq300:#6da7ec; --seq350:#5598e7; --seq400:#3987e5; --seq450:#2a78d6; --seq500:#256abf; --seq550:#1c5cab;
+      --good-text: #0ca30c;
+      --accent: #3987e5;
+      --wash: rgba(57,135,229,0.14);
+    }
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: var(--page); color: var(--ink-1);
+    font-size: 14px; line-height: 1.45;
+  }
+  header.app {
+    display:flex; align-items:center; gap:16px; flex-wrap:wrap;
+    padding: 14px 22px; background: var(--surface-1);
+    border-bottom: 1px solid var(--border);
+    position: sticky; top:0; z-index: 50;
+  }
+  .logo { display:flex; align-items:center; gap:10px; }
+  .logo-mark {
+    width:34px; height:34px; border-radius:8px;
+    background: linear-gradient(135deg, var(--s1), var(--seq550));
+    display:flex; align-items:center; justify-content:center;
+    color:#fff; font-weight:800; font-size:15px; letter-spacing:-0.5px;
+  }
+  .logo h1 { font-size:16px; font-weight:700; letter-spacing:-0.2px; }
+  .logo .sub { font-size:11px; color: var(--muted); font-weight:500; }
+  nav.tabs { display:flex; gap:2px; flex-wrap:wrap; margin-left:8px; }
+  nav.tabs button {
+    border:none; background:none; color: var(--ink-2);
+    font: inherit; font-weight:600; font-size:13px;
+    padding: 8px 13px; border-radius:8px; cursor:pointer;
+  }
+  nav.tabs button:hover { background: var(--wash); color: var(--ink-1); }
+  nav.tabs button.on { background: var(--accent); color:#fff; }
+  .hdr-actions { margin-left:auto; display:flex; gap:8px; }
+  .btn {
+    border:1px solid var(--border); background: var(--surface-1); color: var(--ink-1);
+    font: inherit; font-weight:600; font-size:13px; padding: 7px 13px;
+    border-radius:8px; cursor:pointer; display:inline-flex; align-items:center; gap:6px;
+  }
+  .btn:hover { background: var(--wash); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color:#fff; }
+  .btn.primary:hover { filter: brightness(1.08); }
+  .btn.danger { color: var(--critical); }
+  .btn.sm { padding: 4px 9px; font-size:12px; border-radius:6px; }
+  main { max-width: 1280px; margin: 0 auto; padding: 22px; }
+  .view { display:none; }
+  .view.on { display:block; }
+  .view-head { display:flex; align-items:center; gap:12px; margin-bottom:16px; flex-wrap:wrap; }
+  .view-head h2 { font-size:20px; font-weight:750; letter-spacing:-0.3px; }
+  .view-head .spacer { flex:1; }
+  .hint { color: var(--muted); font-size:12px; }
+
+  /* KPI tiles */
+  .tiles { display:grid; grid-template-columns: repeat(auto-fit, minmax(170px,1fr)); gap:12px; margin-bottom:18px; }
+  .tile {
+    background: var(--surface-1); border:1px solid var(--border); border-radius:12px;
+    padding: 14px 16px;
+  }
+  .tile .k { font-size:11.5px; font-weight:600; color: var(--ink-2); text-transform:uppercase; letter-spacing:0.4px; }
+  .tile .v { font-size:24px; font-weight:750; letter-spacing:-0.5px; margin-top:3px; }
+  .tile .d { font-size:12px; color: var(--muted); margin-top:2px; }
+  .tile .d .up { color: var(--good-text); font-weight:650; }
+  .tile .d .down { color: var(--critical); font-weight:650; }
+
+  /* Cards & grid */
+  .grid2 { display:grid; grid-template-columns: 1fr 1fr; gap:14px; }
+  @media (max-width: 900px){ .grid2 { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--surface-1); border:1px solid var(--border); border-radius:12px;
+    padding: 16px 18px; margin-bottom:14px;
+  }
+  .card h3 { font-size:14px; font-weight:700; margin-bottom:2px; }
+  .card .sub { font-size:12px; color: var(--muted); margin-bottom:10px; }
+  .legend { display:flex; gap:14px; flex-wrap:wrap; margin:4px 0 8px; }
+  .legend span { display:inline-flex; align-items:center; gap:6px; font-size:12px; color: var(--ink-2); font-weight:550; }
+  .legend i { width:10px; height:10px; border-radius:3px; display:inline-block; }
+
+  /* Tables */
+  table.data { width:100%; border-collapse:collapse; font-size:13px; }
+  table.data th {
+    text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:0.4px;
+    color: var(--muted); font-weight:650; padding: 7px 10px; border-bottom:1px solid var(--grid);
+    white-space:nowrap;
+  }
+  table.data td { padding: 9px 10px; border-bottom:1px solid var(--grid); vertical-align:middle; }
+  table.data tr:last-child td { border-bottom:none; }
+  table.data tr.rowlink { cursor:pointer; }
+  table.data tr.rowlink:hover td { background: var(--wash); }
+  td.num, th.num { text-align:right; font-variant-numeric: tabular-nums; }
+  .addr { font-weight:650; }
+  .addr .area { display:block; font-size:11.5px; color: var(--muted); font-weight:500; }
+
+  /* Pills */
+  .pill {
+    display:inline-flex; align-items:center; gap:5px;
+    font-size:11.5px; font-weight:650; padding: 3px 9px; border-radius:99px;
+    border:1px solid var(--border); color: var(--ink-2); white-space:nowrap;
+  }
+  .pill.stage { background: var(--wash); color: var(--accent); border-color: transparent; }
+  .pill.ok    { color: var(--good-text); background: rgba(12,163,12,0.10); border-color:transparent; }
+  .pill.warn  { color: #8a5a00; background: rgba(250,178,25,0.16); border-color:transparent; }
+  .pill.bad   { color: var(--critical); background: rgba(208,59,59,0.10); border-color:transparent; }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) .pill.warn { color:#fab219; }
+  }
+  .strat { font-size:11px; font-weight:700; letter-spacing:0.3px; }
+
+  /* Progress bars */
+  .prog { height:8px; background: var(--grid); border-radius:99px; overflow:hidden; min-width:70px; }
+  .prog i { display:block; height:100%; border-radius:99px; background: var(--s1); }
+
+  /* Forms / modal */
+  dialog {
+    border:1px solid var(--border); border-radius:14px; padding:0;
+    background: var(--surface-1); color: var(--ink-1);
+    width: min(560px, 92vw); max-height: 88vh;
+  }
+  dialog::backdrop { background: rgba(0,0,0,0.35); backdrop-filter: blur(2px); }
+  .dlg-head { display:flex; align-items:center; padding: 14px 18px; border-bottom:1px solid var(--grid); }
+  .dlg-head h3 { font-size:15px; font-weight:700; flex:1; }
+  .dlg-body { padding: 16px 18px; overflow:auto; max-height: calc(88vh - 120px); }
+  .dlg-foot { display:flex; justify-content:flex-end; gap:8px; padding: 12px 18px; border-top:1px solid var(--grid); }
+  .frm { display:grid; grid-template-columns: 1fr 1fr; gap: 10px 12px; }
+  .frm .full { grid-column: 1 / -1; }
+  .frm label { display:block; font-size:11.5px; font-weight:650; color: var(--ink-2); margin-bottom:3px; }
+  .frm input, .frm select, .frm textarea {
+    width:100%; font: inherit; font-size:13px; color: var(--ink-1);
+    background: var(--page); border:1px solid var(--border); border-radius:8px;
+    padding: 7px 10px;
+  }
+  .frm textarea { min-height:60px; resize:vertical; }
+  .frm input:focus, .frm select:focus, .frm textarea:focus { outline:2px solid var(--accent); outline-offset:-1px; }
+
+  /* Chart bits */
+  .chart-wrap { position:relative; }
+  svg.chart { display:block; width:100%; height:auto; font-family:inherit; }
+  svg.chart text { font-family: inherit; }
+  #tip {
+    position:fixed; z-index:200; pointer-events:none; display:none;
+    background: var(--ink-1); color: var(--page);
+    font-size:12px; font-weight:550; padding:6px 10px; border-radius:8px;
+    max-width:260px; box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  }
+  #tip b { font-variant-numeric: tabular-nums; }
+
+  /* Underwriting panel */
+  .uw { display:grid; grid-template-columns: 300px 1fr; gap:16px; }
+  @media (max-width: 860px){ .uw { grid-template-columns: 1fr; } }
+  .uw-out { display:grid; grid-template-columns: repeat(auto-fit,minmax(150px,1fr)); gap:10px; align-content:start; }
+  .uw-stat { background: var(--page); border:1px solid var(--border); border-radius:10px; padding:10px 12px; }
+  .uw-stat .k { font-size:10.5px; text-transform:uppercase; letter-spacing:0.4px; color:var(--muted); font-weight:650; }
+  .uw-stat .v { font-size:18px; font-weight:750; margin-top:2px; font-variant-numeric: tabular-nums; }
+  .verdict { grid-column: 1/-1; border-radius:10px; padding:12px 14px; font-weight:650; display:flex; gap:8px; align-items:center; }
+  .verdict.ok { background: rgba(12,163,12,0.10); color: var(--good-text); }
+  .verdict.bad { background: rgba(208,59,59,0.10); color: var(--critical); }
+  .verdict.warn { background: rgba(250,178,25,0.16); color: #8a5a00; }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) .verdict.warn { color: #fab219; }
+  }
+
+  /* Scout cards & grade badges */
+  .scout-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap:12px; }
+  .scard { background: var(--surface-1); border:1px solid var(--border); border-radius:12px; padding:13px 15px; display:flex; flex-direction:column; gap:8px; }
+  .scard .top { display:flex; align-items:flex-start; gap:8px; }
+  .scard .addr { font-weight:700; }
+  .scard .addr a { color: var(--accent); text-decoration:none; }
+  .scard .addr a:hover { text-decoration:underline; }
+  .scard .city { font-size:11.5px; color: var(--muted); }
+  .badge { margin-left:auto; min-width:30px; height:30px; padding:0 7px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; color:#fff; flex:none; }
+  .badge.gA { background: var(--s3); } .badge.gB { background: var(--s1); }
+  .badge.gC { background: var(--s4); } .badge.gD { background: var(--critical); }
+  .snums { display:grid; grid-template-columns: repeat(auto-fit,minmax(70px,1fr)); gap:6px; }
+  .snums .k { font-size:10px; text-transform:uppercase; letter-spacing:0.3px; color:var(--muted); font-weight:650; }
+  .snums .v { font-size:13.5px; font-weight:700; font-variant-numeric: tabular-nums; }
+  .scard .foot { display:flex; gap:6px; flex-wrap:wrap; margin-top:auto; padding-top:4px; }
+  .offtag { font-size:10.5px; font-weight:750; letter-spacing:0.4px; color:#fff; background: var(--s2); border-radius:6px; padding:2px 7px; text-transform:uppercase; }
+
+  /* Tasks & comms */
+  .task { display:flex; align-items:center; gap:10px; padding:8px 4px; border-bottom:1px solid var(--grid); }
+  .task:last-child { border-bottom:none; }
+  .task input[type=checkbox]{ width:16px; height:16px; accent-color: var(--accent); cursor:pointer; flex:none; }
+  .task .tmain { flex:1; min-width:0; }
+  .task .tsub { font-size:11.5px; color: var(--muted); }
+  .due { font-size:11.5px; font-weight:650; white-space:nowrap; }
+  .due.over { color: var(--critical); }
+  .due.soon { color: #8a5a00; }
+  @media (prefers-color-scheme: dark){ :root:where(:not([data-theme="light"])) .due.soon { color:#fab219; } }
+  .chip { display:inline-flex; align-items:center; gap:5px; font-size:11.5px; font-weight:600; border:1px solid var(--border); border-radius:99px; padding:3px 9px; color:var(--ink-2); }
+  .clink { color: var(--accent); text-decoration:none; font-weight:650; }
+  .clink:hover { text-decoration:underline; }
+
+  /* ===== iPad / touch / standalone app ===== */
+  html { -webkit-text-size-adjust: 100%; }
+  body { -webkit-tap-highlight-color: rgba(42,120,214,0.15); overscroll-behavior-y: contain; }
+  header.app { padding-top: calc(14px + env(safe-area-inset-top)); }
+  main { padding-bottom: calc(22px + env(safe-area-inset-bottom)); }
+  .scroll-x { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+
+  @media (max-width: 1100px) {
+    header.app { gap:10px; padding-left: max(12px, env(safe-area-inset-left)); padding-right: max(12px, env(safe-area-inset-right)); }
+    .logo .sub { display:none; }
+    nav.tabs {
+      order:10; width:100%; margin:2px -12px 0; padding:0 12px 8px;
+      flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;
+      scrollbar-width:none; scroll-snap-type:x proximity;
+    }
+    nav.tabs::-webkit-scrollbar { display:none; }
+    nav.tabs button { flex:none; scroll-snap-align:start; }
+    main { padding-left: max(14px, env(safe-area-inset-left)); padding-right: max(14px, env(safe-area-inset-right)); }
+    .card { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    table.data { min-width: 700px; }
+    .uw { grid-template-columns: 1fr; }
+  }
+  @media (hover: none) {
+    .btn { min-height:38px; padding:9px 14px; }
+    .btn.sm { min-height:34px; padding:7px 12px; font-size:12.5px; }
+    nav.tabs button { min-height:40px; padding:9px 15px; font-size:13.5px; }
+    table.data td, table.data th { padding:12px 10px; }
+    .task { padding:12px 4px; }
+    .task input[type=checkbox] { width:22px; height:22px; }
+    /* 16px stops iOS from zooming the page when a field is focused */
+    input, select, textarea, .frm input, .frm select, .frm textarea { font-size:16px !important; }
+    .scard .foot select { font-size:16px !important; min-height:34px; }
+  }
+
+  /* ===== Passcode lock ===== */
+  .lock {
+    position:fixed; inset:0; z-index:500; display:flex; align-items:center; justify-content:center;
+    background: var(--page); padding: calc(20px + env(safe-area-inset-top)) 20px calc(20px + env(safe-area-inset-bottom));
+  }
+  .lock[hidden] { display:none; }
+  .lockbox { width:min(330px, 100%); text-align:center; }
+  .lockbox .logo-mark { width:60px; height:60px; border-radius:14px; font-size:24px; margin:0 auto 16px; }
+  .lockbox h2 { font-size:18px; font-weight:700; letter-spacing:-0.2px; }
+  .lockbox .lsub { font-size:13px; color:var(--muted); margin-top:4px; }
+  .dots { display:flex; gap:12px; justify-content:center; margin:22px 0 6px; min-height:16px; }
+  .dots i { width:13px; height:13px; border-radius:99px; border:1.5px solid var(--baseline); display:block; }
+  .dots i.on { background:var(--accent); border-color:var(--accent); }
+  .lockmsg { min-height:20px; font-size:12.5px; font-weight:600; color:var(--critical); margin-bottom:10px; }
+  .keypad { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+  .keypad button {
+    font:inherit; font-size:22px; font-weight:600; color:var(--ink-1);
+    background:var(--surface-1); border:1px solid var(--border); border-radius:99px;
+    height:64px; cursor:pointer; -webkit-tap-highlight-color:transparent;
+  }
+  .keypad button:active { background:var(--wash); transform:scale(0.96); }
+  .keypad button.act { font-size:14px; font-weight:700; }
+  .keypad button.go { background:var(--accent); border-color:var(--accent); color:#fff; }
+  .keypad button.blank { background:none; border:none; cursor:default; }
+  .locklink { margin-top:16px; font-size:12.5px; }
+  .locklink a { color:var(--accent); font-weight:650; cursor:pointer; text-decoration:none; }
+
+  .banner {
+    background:var(--wash); border:1px solid var(--accent); border-radius:12px;
+    padding:14px 16px; margin-bottom:16px; font-size:13px;
+  }
+  .banner b { display:block; font-size:14px; margin-bottom:3px; }
+
+  .muted { color: var(--muted); }
+  .right { text-align:right; }
+  .mb0 { margin-bottom:0; }
+  .empty { text-align:center; color:var(--muted); padding:30px 10px; font-size:13px; }
+  footer.app { text-align:center; color:var(--muted); font-size:11.5px; padding: 10px 0 26px; }
+</style>
+</head>
+<body>
+<header class="app">
+  <div class="logo">
+    <div class="logo-mark">SG</div>
+    <div>
+      <h1>Solid Ground Capital</h1>
+      <div class="sub">Command Center — scout · invest · build · coordinate</div>
+    </div>
+  </div>
+  <nav class="tabs" id="tabs">
+    <button data-v="dash" class="on">Dashboard</button>
+    <button data-v="scout">Deal Scout</button>
+    <button data-v="leads">Leads</button>
+    <button data-v="deals">Deals</button>
+    <button data-v="projects">Projects</button>
+    <button data-v="crew">Crew</button>
+    <button data-v="partners">Partners</button>
+    <button data-v="loans">Loans</button>
+    <button data-v="investors">Investors</button>
+    <button data-v="money">Financials</button>
+    <button data-v="comms">Comms</button>
+  </nav>
+  <div class="hdr-actions">
+    <a class="btn" href="https://drive.google.com/drive/folders/1p3jq_eiy1larrBiwkX9epBe3AQ7Gv5Hl" target="_blank" rel="noopener" title="Open the project folder in Google Drive (My Drive › Claude › Projects › Real Estate investment)" style="text-decoration:none">📁 Project files</a>
+    <button class="btn" id="btnLock" title="Lock the app" hidden>🔒</button>
+    <button class="btn" id="btnLoad" title="Load a saved data file">📂 Load</button>
+    <button class="btn primary" id="btnSave" title="Save / share a backup of all data">💾 Save</button>
+    <input type="file" id="fileIn" accept=".json,application/json" style="display:none">
+  </div>
+</header>
+
+<main>
+  <section class="view on" id="v-dash"></section>
+  <section class="view" id="v-scout"></section>
+  <section class="view" id="v-leads"></section>
+  <section class="view" id="v-deals"></section>
+  <section class="view" id="v-projects"></section>
+  <section class="view" id="v-crew"></section>
+  <section class="view" id="v-partners"></section>
+  <section class="view" id="v-loans"></section>
+  <section class="view" id="v-investors"></section>
+  <section class="view" id="v-money"></section>
+  <section class="view" id="v-comms"></section>
+</main>
+
+<footer class="app">
+  <div>Solid Ground Capital Command Center · data stays on this device — use Save to back it up · assumptions editable in Deals ⚙</div>
+  <div id="devTools" style="margin-top:8px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap"></div>
+</footer>
+
+<div class="lock" id="lock" hidden>
+  <div class="lockbox">
+    <div class="logo-mark">SG</div>
+    <h2 id="lockTitle">Enter passcode</h2>
+    <div class="lsub" id="lockSub">Solid Ground Capital</div>
+    <div class="dots" id="lockDots"></div>
+    <div class="lockmsg" id="lockMsg"></div>
+    <div class="keypad" id="keypad"></div>
+    <div class="locklink" id="lockLink"></div>
+  </div>
+</div>
+
+<div id="tip"></div>
+<dialog id="dlg">
+  <div class="dlg-head"><h3 id="dlgTitle"></h3><button class="btn sm" onclick="document.getElementById('dlg').close()">✕</button></div>
+  <div class="dlg-body"><div class="frm" id="dlgForm"></div></div>
+  <div class="dlg-foot">
+    <button class="btn" onclick="document.getElementById('dlg').close()">Cancel</button>
+    <button class="btn primary" id="dlgSave">Save</button>
+  </div>
+</dialog>
+
+<script>
+const ICON512 = "data:image/png;base64,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";
+/* ============ SEED DATA ============ */
+const SEED = {
+  meta: { firm: "Solid Ground Capital", version: 2 },
+  settings: {
+    hardMoneyRate: 11.5, hardMoneyPoints: 2.5, dscrRate: 6.75,
+    maoPct: 70, minFlipProfit: 75000, fundTarget: 3000000,
+    sellCostPct: 7, buyClosePct: 1.5, expenseRatioPct: 35, refiLtvPct: 75,
+    largeMaxCost: 10000000, largeMinMarginPct: 18, softCostPct: 12,
+    scoutDashUrl: "https://javad-solid.github.io/sredeal/",
+    scoutPortalUrl: "https://javad-solid.github.io/sredeal/investors/"
+  },
+  leads: [], deals: [], projects: [], crew: [], investors: [], transactions: [],
+  partners: [], scout: [], loans: [], inspections: [], comms: []
+};
+
+/* ============ STATE / PERSISTENCE ============ */
+// Published copies ship blank (<html data-seed="blank">) so no real names live in a public file;
+// the app then runs entirely on the data you load and keep on this device.
+const BLANK_START = document.documentElement.dataset.seed === "blank";
+const EMPTY = { meta:{firm:"Solid Ground Capital", version:2}, settings:SEED.settings,
+  leads:[], deals:[], projects:[], crew:[], investors:[], transactions:[],
+  partners:[], scout:[], loans:[], inspections:[], comms:[] };
+let S = JSON.parse(JSON.stringify(BLANK_START ? EMPTY : SEED));
+let uid = () => Math.random().toString(36).slice(2,9);
+
+/* --- normalize any incoming data so older exports keep working --- */
+function normalize(data){
+  if(!data || !data.meta) throw new Error("Not a Solid Ground data file");
+  data.settings = Object.assign({}, SEED.settings, data.settings || {});
+  ["leads","deals","projects","crew","investors","transactions",
+   "partners","scout","loans","inspections","comms"].forEach(k => { if(!Array.isArray(data[k])) data[k] = []; });
+  data.deals.forEach(d => { if(!d.team) d.team = {agent:"", escrow:"", title:"", lender:"", inspector:""}; });
+  return data;
+}
+
+/* --- device storage (silently no-ops where storage is blocked) --- */
+const LS = {
+  get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } },
+  set(k,v){ try { localStorage.setItem(k,v); return true; } catch(e){ return false; } },
+  del(k){ try { localStorage.removeItem(k); } catch(e){} }
+};
+const HAS_STORE = (()=>{ try { localStorage.setItem("__sgc","1"); localStorage.removeItem("__sgc"); return true; } catch(e){ return false; } })();
+const SUBTLE = (window.crypto && window.crypto.subtle) ? window.crypto.subtle : null;
+const K_DATA="sgc_cc_data", K_SALT="sgc_cc_salt", K_VERIFY="sgc_cc_verify", K_NOPIN="sgc_cc_nopin";
+let cryptoKey = null;   // AES-GCM key derived from the passcode; null = stored in the clear
+
+const b64 = buf => { const a = new Uint8Array(buf); let s=""; for(let i=0;i<a.length;i+=8192) s += String.fromCharCode.apply(null, a.subarray(i,i+8192)); return btoa(s); };
+const unb64 = s => Uint8Array.from(atob(s), c=>c.charCodeAt(0));
+async function deriveKey(pin, salt){
+  const base = await SUBTLE.importKey("raw", new TextEncoder().encode(pin), "PBKDF2", false, ["deriveKey"]);
+  return SUBTLE.deriveKey({name:"PBKDF2", salt, iterations:150000, hash:"SHA-256"}, base,
+    {name:"AES-GCM", length:256}, false, ["encrypt","decrypt"]);
+}
+async function encStr(str){
+  if(!cryptoKey) return "p:" + str;
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const ct = await SUBTLE.encrypt({name:"AES-GCM", iv}, cryptoKey, new TextEncoder().encode(str));
+  return "e:" + b64(iv) + ":" + b64(ct);
+}
+async function decStr(blob){
+  if(blob.slice(0,2) === "p:") return blob.slice(2);
+  const parts = blob.split(":");
+  const pt = await SUBTLE.decrypt({name:"AES-GCM", iv:unb64(parts[1])}, cryptoKey, unb64(parts[2]));
+  return new TextDecoder().decode(pt);
+}
+
+let saveTimer = null, saving = false;
+function autoSave(){
+  if(!HAS_STORE) return;
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(async ()=>{
+    if(saving) return; saving = true;
+    try { LS.set(K_DATA, await encStr(JSON.stringify(S))); } catch(e){} finally { saving = false; }
+  }, 500);
+}
+async function loadLocal(){
+  const raw = LS.get(K_DATA); if(!raw) return false;
+  try { S = normalize(JSON.parse(await decStr(raw))); return true; }
+  catch(e){ return false; }
+}
+
+/* --- file save / load (backup + moving data between your Mac and iPad) --- */
+async function saveFile(){
+  const name = `SolidGround_CommandCenter_${new Date().toISOString().slice(0,10)}.json`;
+  const text = JSON.stringify(S, null, 2);
+  const blob = new Blob([text], {type:"application/json"});
+  // iPad: hand it to the share sheet so it can go to Files, AirDrop, Mail…
+  try {
+    const file = new File([blob], name, {type:"application/json"});
+    if(navigator.canShare && navigator.canShare({files:[file]})){ await navigator.share({files:[file], title:name}); return; }
+  } catch(e){ if(e && e.name === "AbortError") return; }
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = name;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(a.href), 1000);
+}
+function loadFile(file){
+  const r = new FileReader();
+  r.onload = () => {
+    try { S = normalize(JSON.parse(r.result)); renderAll(); autoSave();
+          alert("Loaded — "+S.deals.length+" deals, "+S.investors.length+" investors, "+S.partners.length+" partners."); }
+    catch(e){ alert("Couldn't load file: " + e.message); }
+  };
+  r.readAsText(file);
+}
+document.getElementById("btnSave").onclick = saveFile;
+document.getElementById("btnLoad").onclick = () => document.getElementById("fileIn").click();
+document.getElementById("fileIn").onchange = e => { if(e.target.files[0]) loadFile(e.target.files[0]); e.target.value=""; };
+
+/* ============ PASSCODE LOCK ============ */
+const lockEl = document.getElementById("lock");
+let lockMode = "enter", entry = "", pendingPin = "", lastHidden = 0;
+function drawDots(){
+  document.getElementById("lockDots").innerHTML = Array.from({length:Math.max(4, entry.length)}, (_,i)=>`<i class="${i<entry.length?"on":""}"></i>`).join("");
+}
+function buildKeypad(){
+  const keys = ["1","2","3","4","5","6","7","8","9","del","0","go"];
+  document.getElementById("keypad").innerHTML = keys.map(k=>{
+    if(k==="del") return `<button class="act" data-k="del" aria-label="Delete">⌫</button>`;
+    if(k==="go")  return `<button class="act go" data-k="go" aria-label="Confirm">✓</button>`;
+    return `<button data-k="${k}">${k}</button>`;
+  }).join("");
+}
+document.getElementById("keypad").addEventListener("click", e=>{
+  const b = e.target.closest("button"); if(!b) return;
+  const k = b.dataset.k;
+  document.getElementById("lockMsg").textContent = "";
+  if(k==="del"){ entry = entry.slice(0,-1); }
+  else if(k==="go"){ submitPin(); return; }
+  else if(entry.length < 6){ entry += k; }
+  drawDots();
+});
+document.addEventListener("keydown", e=>{
+  if(lockEl.hidden) return;
+  if(/^[0-9]$/.test(e.key) && entry.length<6){ entry += e.key; drawDots(); document.getElementById("lockMsg").textContent=""; }
+  else if(e.key==="Backspace"){ entry = entry.slice(0,-1); drawDots(); }
+  else if(e.key==="Enter"){ submitPin(); }
+});
+function showLock(mode){
+  lockMode = mode; entry = ""; drawDots(); buildKeypad();
+  document.getElementById("lockMsg").textContent = "";
+  const t = {enter:"Enter passcode", set:"Create a passcode", confirm:"Confirm passcode", change:"Enter a new passcode"}[mode];
+  document.getElementById("lockTitle").textContent = t;
+  document.getElementById("lockSub").textContent = mode==="enter" ? "Solid Ground Capital" : "4–6 digits · unlocks the data on this device";
+  document.getElementById("lockLink").innerHTML = (mode==="set")
+    ? `<a onclick="skipPin()">Not now — don't lock this device</a>` : "";
+  lockEl.hidden = false;
+}
+function hideLock(){ lockEl.hidden = true; entry = ""; }
+async function submitPin(){
+  if(entry.length < 4){ document.getElementById("lockMsg").textContent = "Passcode must be at least 4 digits"; return; }
+  const pin = entry;
+  if(lockMode === "set" || lockMode === "change"){
+    pendingPin = pin; entry = ""; drawDots();
+    lockMode = "confirm"; document.getElementById("lockTitle").textContent = "Confirm passcode"; document.getElementById("lockLink").innerHTML = "";
+    return;
+  }
+  if(lockMode === "confirm"){
+    if(pin !== pendingPin){ entry=""; drawDots(); document.getElementById("lockMsg").textContent = "Didn't match — start again"; lockMode="set"; document.getElementById("lockTitle").textContent="Create a passcode"; return; }
+    await setPin(pin); return;
+  }
+  // enter
+  document.getElementById("lockMsg").textContent = "Checking…";
+  const ok = await tryUnlock(pin);
+  if(!ok){ entry = ""; drawDots(); document.getElementById("lockMsg").textContent = "Wrong passcode"; }
+}
+async function setPin(pin){
+  if(!SUBTLE){ LS.set(K_NOPIN,"1"); hideLock(); renderAll(); return; }
+  const salt = crypto.getRandomValues(new Uint8Array(16));
+  cryptoKey = await deriveKey(pin, salt);
+  LS.set(K_SALT, b64(salt));
+  LS.set(K_VERIFY, await encStr("SGC-OK"));
+  LS.del(K_NOPIN);
+  clearTimeout(saveTimer);
+  LS.set(K_DATA, await encStr(JSON.stringify(S)));
+  document.getElementById("btnLock").hidden = false;
+  hideLock(); renderAll();
+}
+async function tryUnlock(pin){
+  try {
+    cryptoKey = await deriveKey(pin, unb64(LS.get(K_SALT)));
+    if(await decStr(LS.get(K_VERIFY)) !== "SGC-OK") throw new Error("bad");
+  } catch(e){ cryptoKey = null; return false; }
+  await loadLocal();
+  document.getElementById("btnLock").hidden = false;
+  hideLock(); renderAll(); return true;
+}
+function skipPin(){ LS.set(K_NOPIN,"1"); hideLock(); autoSave(); renderAll(); }
+function lockNow(){ if(LS.get(K_SALT)){ cryptoKey = null; showLock("enter"); } }
+async function changePin(){
+  if(!LS.get(K_SALT)){ showLock("set"); return; }
+  showLock("change");
+}
+function forgetData(){
+  if(!confirm("Remove all Command Center data saved on this device? Your saved JSON backups are not affected.")) return;
+  [K_DATA,K_SALT,K_VERIFY,K_NOPIN].forEach(k=>LS.del(k));
+  location.reload();
+}
+document.getElementById("btnLock").onclick = lockNow;
+// Re-lock after two minutes in the background
+document.addEventListener("visibilitychange", ()=>{
+  if(document.hidden){ lastHidden = Date.now(); }
+  else if(lastHidden && Date.now()-lastHidden > 120000 && LS.get(K_SALT) && lockEl.hidden){ lockNow(); }
+});
+
+/* ============ INSTALLABLE APP (manifest + offline) ============ */
+(function(){
+  try {
+    const manifest = { name:"Solid Ground Capital — Command Center", short_name:"SGC Hub",
+      start_url:".", scope:".", display:"standalone", orientation:"any",
+      background_color:"#f9f9f7", theme_color:"#2a78d6",
+      icons:[{src:ICON512, sizes:"512x512", type:"image/png", purpose:"any"},
+             {src:ICON512, sizes:"512x512", type:"image/png", purpose:"maskable"}] };
+    const link = document.createElement("link");
+    link.rel = "manifest";
+    link.href = URL.createObjectURL(new Blob([JSON.stringify(manifest)], {type:"application/manifest+json"}));
+    document.head.appendChild(link);
+  } catch(e){}
+  if("serviceWorker" in navigator && location.protocol === "https:"){
+    navigator.serviceWorker.register("sw.js").catch(()=>{});   // absent outside the hosted copy — harmless
+  }
+})();
+
+/* ============ HELPERS ============ */
+const $  = s => document.querySelector(s);
+const money = n => (n<0?"−$":"$") + Math.round(Math.abs(n)).toLocaleString("en-US");
+const moneyK = n => (n<0?"−$":"$") + (Math.abs(n)>=1e6 ? (Math.abs(n)/1e6).toFixed(2)+"M" : Math.round(Math.abs(n)/1000)+"K");
+const pctf = n => (Math.round(n*10)/10) + "%";
+const esc = s => String(s??"").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmtDate = d => { if(!d) return "—"; const [y,m,dd] = d.split("-"); return `${Number(m)}/${Number(dd)}/${y.slice(2)}`; };
+const today = () => new Date().toISOString().slice(0,10);
+
+/* ============ CONTACT RESOLUTION (partners + investors + crew) ============ */
+const PARTNER_CATS = ["Agent","Lender","Escrow","Title","Inspector","Attorney","Insurance","Wholesaler","Other"];
+function findContact(id){
+  if(!id) return null;
+  const p = S.partners.find(x=>x.id===id); if(p) return {kind:"Partner", label:p.name+" · "+(p.company||p.cat), name:p.name, email:p.email||"", phone:p.phone||"", cat:p.cat};
+  const i = S.investors.find(x=>x.id===id); if(i) return {kind:"Investor", label:i.name+" · Investor", name:i.name, email:i.email||"", phone:i.phone||"", cat:"Investor"};
+  const c = S.crew.find(x=>x.id===id); if(c) return {kind:"Crew", label:c.name+" · "+(c.trade||"Crew"), name:c.name, email:c.email||"", phone:c.phone||"", cat:"Crew"};
+  return null;
+}
+const contactName = id => { const c = findContact(id); return c ? c.name : (id||"—"); };
+const partnersByCat = cat => S.partners.filter(p=>p.cat===cat);
+const partnerOpts = cat => [{v:"",l:""}].concat(partnersByCat(cat).map(p=>({v:p.id, l:p.name+" ("+(p.company||p.cat)+")"})));
+const allContactOpts = () => [{v:"",l:""}]
+  .concat(S.partners.map(p=>({v:p.id, l:p.name+" — "+p.cat})))
+  .concat(S.investors.map(i=>({v:i.id, l:i.name+" — Investor"})))
+  .concat(S.crew.map(c=>({v:c.id, l:c.name+" — "+(c.trade||"Crew")})));
+function draftMail(email, subject, body){
+  if(!email){ alert("No email on file for this contact — add one first."); return; }
+  location.href = "mailto:"+encodeURIComponent(email)+"?subject="+encodeURIComponent(subject||"")+"&body="+encodeURIComponent((body||"")+"\n\n");
+}
+function contactBtns(c, subject){
+  if(!c) return "";
+  let h = "";
+  if(c.email) h += `<button class="btn sm" title="Draft email" onclick="event.stopPropagation();draftMail('${esc(c.email)}','${esc(subject||"Solid Ground Capital — follow up")}','Hi ${esc(c.name.split(" ")[0])},')">✉</button>`;
+  if(c.phone){ const tel = c.phone.replace(/[^0-9+]/g,"");
+    h += `<a class="btn sm" title="Call" href="tel:${tel}" onclick="event.stopPropagation()">📞</a>`;
+    h += `<a class="btn sm" title="Text" href="sms:${tel}" onclick="event.stopPropagation()">💬</a>`; }
+  return h;
+}
+function dueClass(d){
+  if(!d) return "";
+  const t = today();
+  if(d < t) return "over";
+  const in3 = new Date(Date.now()+3*864e5).toISOString().slice(0,10);
+  return d <= in3 ? "soon" : "";
+}
+function openTasks(){
+  return S.comms.filter(m=>m.nextAction && !m.done)
+    .slice().sort((a,b)=>(a.nextDate||"9999").localeCompare(b.nextDate||"9999"));
+}
+function logComm(dealId, who){
+  const m = {id:"M"+uid(), date:today(), dealId:dealId||"", who:who||"", channel:"Email", summary:"", nextAction:"", nextDate:"", done:false, doneStr:"Open"};
+  openForm("Log communication", commFields(), m, o=>{ o.done = o.doneStr==="Done"; delete o.doneStr; S.comms.unshift(o); renderAll(); });
+}
+
+/* ============ UNDERWRITING ENGINE ============ */
+function underwrite(d){
+  const st = S.settings;
+  const loanBase = (d.purchase||0) + (d.rehab||0);
+  const points = loanBase * st.hardMoneyPoints/100;
+  const interest = loanBase * st.hardMoneyRate/100 * (d.holdMonths||6)/12;
+  const buyClose = (d.purchase||0) * st.buyClosePct/100;
+  const sellCosts = (d.arv||0) * st.sellCostPct/100;
+  const mao = (d.arv||0) * st.maoPct/100 - (d.rehab||0);
+  const allIn = loanBase + points + interest + buyClose;
+  const out = { mao, points, interest, buyClose, sellCosts, allIn };
+
+  if(d.strategy === "Wholesale"){
+    out.fee = Math.max(0, mao - (d.purchase||0));
+    out.profit = out.fee;
+    out.roiPct = d.purchase ? out.fee/(d.purchase*0.03)*100 : 0; // vs typical EMD risk
+    out.verdict = out.fee >= 10000 ? "ok" : (out.fee > 0 ? "warn" : "bad");
+    out.verdictText = out.fee >= 10000 ? `Assignable — spread ${money(out.fee)} vs MAO` :
+                      out.fee > 0 ? `Thin — only ${money(out.fee)} under MAO` : `Over MAO by ${money(-out.fee)} — renegotiate or pass`;
+  } else if(d.strategy === "BRRRR" || d.strategy === "Hold"){
+    const noi = (d.rentMo||0)*12 * (1 - st.expenseRatioPct/100);
+    const refiLoan = (d.arv||0) * st.refiLtvPct/100;
+    const r = st.dscrRate/100/12, n = 360;
+    const pay = refiLoan>0 ? refiLoan * r / (1 - Math.pow(1+r,-n)) : 0;
+    out.noi = noi; out.refiLoan = refiLoan; out.debtSvcMo = pay;
+    out.dscr = pay>0 ? (d.rentMo||0)/pay : 0; // lender convention: gross rent / debt service
+    out.cashOut = refiLoan - allIn;
+    out.cashFlowMo = noi/12 - pay;
+    out.capLeft = Math.max(0, -out.cashOut);
+    out.profit = out.cashFlowMo*12;
+    out.verdict = (out.dscr>=1.1 && out.cashFlowMo>=0) ? "ok" : (out.dscr>=1.0 ? "warn" : "bad");
+    out.verdictText = out.dscr>=1.1 && out.cashFlowMo>=0 ? `DSCR ${out.dscr.toFixed(2)} — refi should clear, ${money(out.cashFlowMo)}/mo cash flow` :
+                      out.dscr>=1.0 ? `DSCR ${out.dscr.toFixed(2)} — tight, lender may cut LTV` : `DSCR ${out.dscr.toFixed(2)} — won't qualify at ${st.dscrRate}%`;
+  } else if(d.strategy === "Ground-Up"){
+    // Large Projects tier: purchase = land/site, rehab = hard construction at SGC cost
+    const soft = (d.rehab||0) * st.softCostPct/100;
+    const totalCost = (d.purchase||0) + (d.rehab||0) + soft;
+    const gPoints = totalCost * st.hardMoneyPoints/100;
+    const gInterest = totalCost * 0.6 * st.hardMoneyRate/100 * (d.holdMonths||18)/12; // ~60% avg drawn balance
+    const gAllIn = totalCost + gPoints + gInterest + buyClose;
+    out.soft = soft; out.totalCost = totalCost; out.points = gPoints; out.interest = gInterest; out.allIn = gAllIn;
+    out.profit = (d.arv||0) - gAllIn - sellCosts;
+    out.marginPct = gAllIn>0 ? out.profit/gAllIn*100 : 0;
+    out.roiPct = out.marginPct;
+    out.overCap = gAllIn > st.largeMaxCost;
+    out.verdict = (!out.overCap && out.marginPct >= st.largeMinMarginPct) ? "ok" :
+                  (!out.overCap && out.marginPct >= st.largeMinMarginPct*0.7) ? "warn" : "bad";
+    out.verdictText = out.overCap ? `All-in ${moneyK(gAllIn)} exceeds the ${moneyK(st.largeMaxCost)} Large Projects cap — phase, JV, or pass` :
+                      out.marginPct >= st.largeMinMarginPct ? `Clears the Large Projects tier — ${pctf(out.marginPct)} margin on ${moneyK(gAllIn)} all-in` :
+                      out.marginPct >= st.largeMinMarginPct*0.7 ? `Thin — ${pctf(out.marginPct)} margin vs ${st.largeMinMarginPct}% tier minimum` :
+                      `Doesn't pencil — ${pctf(out.marginPct)} margin on cost`;
+  } else { // Flip & ADU
+    out.profit = (d.arv||0) - allIn - sellCosts;
+    out.roiPct = allIn>0 ? out.profit/allIn*100 : 0;
+    out.overMao = (d.purchase||0) - mao;
+    out.verdict = out.profit >= st.minFlipProfit ? "ok" : (out.profit >= st.minFlipProfit*0.6 ? "warn" : "bad");
+    out.verdictText = out.profit >= st.minFlipProfit ? `Clears ${moneyK(st.minFlipProfit)} min — projected ${money(out.profit)} profit` :
+                      out.profit >= st.minFlipProfit*0.6 ? `Below ${moneyK(st.minFlipProfit)} target — ${money(out.profit)} projected` : `Doesn't pencil — ${money(out.profit)} projected`;
+  }
+  return out;
+}
+/* ============ TOOLTIP ============ */
+const tip = document.getElementById("tip");
+document.addEventListener("mousemove", e => {
+  const t = e.target.closest("[data-tip]");
+  if(t){
+    tip.innerHTML = t.getAttribute("data-tip");
+    tip.style.display = "block";
+    const x = Math.min(e.clientX + 14, window.innerWidth - tip.offsetWidth - 8);
+    const y = Math.min(e.clientY + 14, window.innerHeight - tip.offsetHeight - 8);
+    tip.style.left = x + "px"; tip.style.top = y + "px";
+  } else tip.style.display = "none";
+});
+
+/* ============ CHART BUILDERS (inline SVG) ============ */
+const CV = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+function niceMax(v){
+  if(v<=0) return 1;
+  const p = Math.pow(10, Math.floor(Math.log10(v)));
+  for(const m of [1,1.5,2,2.5,3,4,5,6,8,10]) if(m*p >= v) return m*p;
+  return 10*p;
+}
+
+// Grouped/simple vertical bar chart. series: [{name, color, values[]}]
+function barChart({labels, series, h=210, fmt=moneyK, tipFmt=money}){
+  const W=640, padL=52, padR=10, padT=12, padB=26;
+  const plotW = W-padL-padR, plotH = h-padT-padB;
+  const max = niceMax(Math.max(1,...series.flatMap(s=>s.values)));
+  const n = labels.length, ns = series.length;
+  const slot = plotW/n;
+  const barW = Math.min(34, (slot*0.72 - (ns-1)*2)/ns);
+  const groupW = barW*ns + (ns-1)*2;
+  let g = "";
+  // gridlines + y labels
+  for(let i=0;i<=4;i++){
+    const y = padT + plotH - plotH*i/4;
+    g += `<line x1="${padL}" y1="${y}" x2="${W-padR}" y2="${y}" stroke="var(--grid)" stroke-width="1"/>`;
+    g += `<text x="${padL-7}" y="${y+4}" text-anchor="end" font-size="10.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">${fmt(max*i/4)}</text>`;
+  }
+  labels.forEach((lb,i)=>{
+    const cx = padL + slot*i + slot/2;
+    series.forEach((s,si)=>{
+      const v = s.values[i]||0;
+      const bh = Math.max(0, plotH * v/max);
+      const x = cx - groupW/2 + si*(barW+2);
+      const y = padT + plotH - bh;
+      const r = Math.min(4, bh);
+      g += `<path d="M${x},${padT+plotH} L${x},${y+r} Q${x},${y} ${x+r},${y} L${x+barW-r},${y} Q${x+barW},${y} ${x+barW},${y+r} L${x+barW},${padT+plotH} Z" fill="${s.color}" data-tip="${esc(lb)}${ns>1?" · "+esc(s.name):""}: <b>${tipFmt(v)}</b>"/>`;
+    });
+    const short = lb.length>10 ? lb.slice(0,9)+"…" : lb;
+    g += `<text x="${cx}" y="${h-8}" text-anchor="middle" font-size="10.5" fill="var(--muted)">${esc(short)}</text>`;
+  });
+  g += `<line x1="${padL}" y1="${padT+plotH}" x2="${W-padR}" y2="${padT+plotH}" stroke="var(--baseline)" stroke-width="1"/>`;
+  return `<svg class="chart" viewBox="0 0 ${W} ${h}" role="img">${g}</svg>`;
+}
+
+// Horizontal bar chart (funnel / rankings). rows: [{label, value, color, tip}]
+function hbarChart({rows, h, fmt=String, tipFmt=null}){
+  const W=640, padL=150, padR=64, rowH=30;
+  const H = h || rows.length*rowH + 14;
+  const plotW = W-padL-padR;
+  const max = niceMax(Math.max(1,...rows.map(r=>r.value)));
+  let g = "";
+  rows.forEach((r,i)=>{
+    const y = 8 + i*rowH;
+    const bw = Math.max(2, plotW * r.value/max);
+    const rr = Math.min(4, bw);
+    g += `<text x="${padL-9}" y="${y+15}" text-anchor="end" font-size="11.5" font-weight="550" fill="var(--ink-2)">${esc(r.label.length>20?r.label.slice(0,19)+"…":r.label)}</text>`;
+    g += `<path d="M${padL},${y+4} L${padL+bw-rr},${y+4} Q${padL+bw},${y+4} ${padL+bw},${y+4+rr} L${padL+bw},${y+22-rr} Q${padL+bw},${y+22} ${padL+bw-rr},${y+22} L${padL},${y+22} Z" fill="${r.color}" data-tip="${r.tip || esc(r.label)+': <b>'+fmt(r.value)+'</b>'}"/>`;
+    g += `<text x="${padL+bw+7}" y="${y+17}" font-size="11" font-weight="650" fill="var(--ink-1)" style="font-variant-numeric:tabular-nums">${fmt(r.value)}</text>`;
+  });
+  g += `<line x1="${padL}" y1="4" x2="${padL}" y2="${H-6}" stroke="var(--baseline)" stroke-width="1"/>`;
+  return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img">${g}</svg>`;
+}
+
+// Line chart, single or multi series. series: [{name,color,values[]}]
+function lineChart({labels, series, h=220, fmt=moneyK, tipFmt=money, zeroBased=false}){
+  const W=640, padL=56, padR=30, padT=12, padB=26;
+  const plotW=W-padL-padR, plotH=h-padT-padB;
+  const all = series.flatMap(s=>s.values);
+  let lo = Math.min(0,...all), hi = niceMax(Math.max(1,...all));
+  if(lo<0){ lo = -niceMax(-Math.min(...all)); }
+  const span = hi-lo;
+  const X = i => padL + plotW * (labels.length===1?0.5:i/(labels.length-1));
+  const Y = v => padT + plotH - plotH*(v-lo)/span;
+  let g="";
+  for(let i=0;i<=4;i++){
+    const v = lo + span*i/4, y = Y(v);
+    g += `<line x1="${padL}" y1="${y}" x2="${W-padR}" y2="${y}" stroke="${Math.abs(v)<1e-9?"var(--baseline)":"var(--grid)"}" stroke-width="1"/>`;
+    g += `<text x="${padL-7}" y="${y+4}" text-anchor="end" font-size="10.5" fill="var(--muted)" style="font-variant-numeric:tabular-nums">${fmt(v)}</text>`;
+  }
+  labels.forEach((lb,i)=>{
+    if(labels.length<=8 || i%2===0)
+      g += `<text x="${X(i)}" y="${h-8}" text-anchor="middle" font-size="10.5" fill="var(--muted)">${esc(lb)}</text>`;
+  });
+  series.forEach(s=>{
+    const pts = s.values.map((v,i)=>`${X(i)},${Y(v)}`).join(" ");
+    g += `<polyline points="${pts}" fill="none" stroke="${s.color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
+    s.values.forEach((v,i)=>{
+      g += `<circle cx="${X(i)}" cy="${Y(v)}" r="3.5" fill="${s.color}" stroke="var(--surface-1)" stroke-width="2"/>`;
+      g += `<rect x="${X(i)-10}" y="${padT}" width="20" height="${plotH}" fill="transparent" data-tip="${esc(labels[i])}${series.length>1?" · "+esc(s.name):""}: <b>${tipFmt(v)}</b>"/>`;
+    });
+  });
+  return `<svg class="chart" viewBox="0 0 ${W} ${h}" role="img">${g}</svg>`;
+}
+
+function legendHtml(items){
+  return `<div class="legend">` + items.map(i=>`<span><i style="background:${i.color}"></i>${esc(i.name)}</span>`).join("") + `</div>`;
+}
+
+/* ============ FORM / MODAL ============ */
+function openForm(title, fields, obj, onSave){
+  $("#dlgTitle").textContent = title;
+  const f = $("#dlgForm");
+  f.innerHTML = fields.map(fl=>{
+    const v = obj[fl.key] ?? fl.def ?? "";
+    const cls = fl.full ? ' class="full"' : "";
+    if(fl.type==="select")
+      return `<div${cls}><label>${fl.label}</label><select data-k="${fl.key}">${fl.opts.map(o=>{
+        const val = (o && typeof o==="object") ? o.v : o;
+        const lab = (o && typeof o==="object") ? o.l : o;
+        return `<option value="${esc(val)}" ${val===v?"selected":""}>${esc(lab===""?"— none —":lab)}</option>`;
+      }).join("")}</select></div>`;
+    if(fl.type==="textarea")
+      return `<div${cls}><label>${fl.label}</label><textarea data-k="${fl.key}">${esc(v)}</textarea></div>`;
+    return `<div${cls}><label>${fl.label}</label><input data-k="${fl.key}" type="${fl.type||"text"}" value="${esc(v)}" ${fl.step?`step="${fl.step}"`:""}></div>`;
+  }).join("");
+  $("#dlgSave").onclick = () => {
+    fields.forEach(fl=>{
+      const el = f.querySelector(`[data-k="${fl.key}"]`);
+      let v = el.value;
+      if(fl.type==="number") v = parseFloat(v)||0;
+      obj[fl.key] = v;
+    });
+    $("#dlg").close();
+    onSave(obj);
+  };
+  $("#dlg").showModal();
+}
+function confirmDel(msg, fn){ if(confirm(msg)) fn(); }
+
+/* ============ AGGREGATES ============ */
+const LEAD_STAGES = ["New","Contacted","Negotiating","Under Contract","Dead"];
+const DEAL_STAGES = ["Analyzing","Offer Out","Under Contract","Closed","Passed"];
+const ORD = [CV("--seq250"),CV("--seq350"),CV("--seq450"),CV("--seq550"),CV("--baseline")];
+
+function agg(){
+  const committed = S.investors.reduce((a,i)=>a+(+i.committed||0),0);
+  const funded = S.investors.reduce((a,i)=>a+(+i.funded||0),0);
+  const cash = S.transactions.reduce((a,t)=>a+(+t.amount||0),0);
+  const activeDeals = S.deals.filter(d=>!["Passed","Closed"].includes(d.stage));
+  const pipelineProfit = activeDeals.reduce((a,d)=>a+Math.max(0,underwrite(d).profit||0),0);
+  const activeProjects = S.projects.filter(p=>p.stage!=="Complete");
+  const budgetTotal = activeProjects.reduce((a,p)=>a+(+p.budget||0),0);
+  const spentTotal = activeProjects.reduce((a,p)=>a+p.cats.reduce((x,c)=>x+(+c.actual||0),0),0);
+  const activeLeads = S.leads.filter(l=>l.stage!=="Dead").length;
+  return {committed, funded, cash, pipelineProfit, activeDeals, activeProjects, budgetTotal, spentTotal, activeLeads};
+}
+function monthlyCash(){
+  const byM = {};
+  S.transactions.forEach(t=>{ const m = (t.date||"").slice(0,7); if(m) byM[m]=(byM[m]||0)+(+t.amount||0); });
+  const ms = Object.keys(byM).sort();
+  let run=0;
+  const labels = ms.map(m=>{ const [y,mo]=m.split("-"); return ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][mo-1]+" '"+y.slice(2); });
+  const cum = ms.map(m=>run+=byM[m]);
+  return {labels, cum, net: ms.map(m=>byM[m])};
+}
+
+/* ============ DASHBOARD ============ */
+function renderDash(){
+  const a = agg();
+  const mc = monthlyCash();
+  const spentPct = a.budgetTotal? a.spentTotal/a.budgetTotal*100 : 0;
+
+  const funnelRows = LEAD_STAGES.map((st,i)=>({
+    label: st, value: S.leads.filter(l=>l.stage===st).length, color: ORD[i],
+    tip: `${st}: <b>${S.leads.filter(l=>l.stage===st).length} lead(s)</b>`
+  }));
+
+  const projLabels = S.projects.map(p=>p.name.split(" ")[0]);
+  const budgetSeries = [
+    {name:"Budget", color:CV("--s1"), values:S.projects.map(p=>+p.budget||0)},
+    {name:"Spent to date", color:CV("--s2"), values:S.projects.map(p=>p.cats.reduce((x,c)=>x+(+c.actual||0),0))}
+  ];
+
+  const dealsSnap = S.deals.filter(d=>!["Passed","Closed"].includes(d.stage)).map(d=>{
+    const u = underwrite(d);
+    return `<tr class="rowlink" onclick="gotoDeal('${d.id}')">
+      <td><span class="addr">${esc(d.addr)}<span class="area">${esc(d.area)}</span></span></td>
+      <td><span class="strat">${esc(d.strategy.toUpperCase())}</span></td>
+      <td><span class="pill stage">${esc(d.stage)}</span></td>
+      <td class="num">${money(u.profit||0)}</td>
+      <td><span class="pill ${u.verdict==="ok"?"ok":u.verdict==="warn"?"warn":"bad"}">${u.verdict==="ok"?"✓ Pencils":u.verdict==="warn"?"△ Tight":"✕ Thin"}</span></td>
+    </tr>`;
+  }).join("");
+
+  const isEmpty = !S.deals.length && !S.leads.length && !S.investors.length && !S.partners.length && !S.scout.length;
+  const firstRun = isEmpty ? `<div class="banner">
+      <b>Welcome to your Command Center</b>
+      This copy starts empty so none of your data sits in a public file. Tap <b>📂 Load</b> and pick the JSON
+      you saved from the Hub on your Mac — everything then lives encrypted on this device only.
+      You can also just start adding partners, deals and scout finds directly.
+    </div>` : "";
+
+  $("#v-dash").innerHTML = `
+    <div class="view-head"><h2>Dashboard</h2><span class="hint">as of ${new Date().toLocaleDateString("en-US",{month:"long", day:"numeric", year:"numeric"})}</span></div>
+    ${firstRun}
+    <div class="tiles">
+      <div class="tile"><div class="k">Capital committed</div><div class="v">${moneyK(a.committed)}</div><div class="d">of ${moneyK(S.settings.fundTarget)} target · <span class="${a.committed>=S.settings.fundTarget?"up":""}">${pctf(a.committed/S.settings.fundTarget*100)}</span></div></div>
+      <div class="tile"><div class="k">Capital funded</div><div class="v">${moneyK(a.funded)}</div><div class="d">${pctf(a.committed?a.funded/a.committed*100:0)} of commitments wired</div></div>
+      <div class="tile"><div class="k">Cash position</div><div class="v">${moneyK(a.cash)}</div><div class="d">after draws & distributions</div></div>
+      <div class="tile"><div class="k">Active projects</div><div class="v">${a.activeProjects.length}</div><div class="d">${moneyK(a.spentTotal)} spent of ${moneyK(a.budgetTotal)} (${pctf(spentPct)})</div></div>
+      <div class="tile"><div class="k">Pipeline profit</div><div class="v">${moneyK(a.pipelineProfit)}</div><div class="d">${a.activeDeals.length} active deal(s) projected</div></div>
+      <div class="tile"><div class="k">Active leads</div><div class="v">${a.activeLeads}</div><div class="d">${S.leads.filter(l=>l.stage==="Negotiating"||l.stage==="Under Contract").length} in negotiation or escrow</div></div>
+      <div class="tile"><div class="k">Scout inbox</div><div class="v">${S.scout.filter(x=>["New","Reviewing"].includes(x.status)).length}</div><div class="d">${S.scout.filter(x=>x.offMarket&&["New","Reviewing"].includes(x.status)).length} off-market waiting</div></div>
+      <div class="tile"><div class="k">Open next actions</div><div class="v">${openTasks().length}</div><div class="d">${(n=>n?`<span class="down">${n} overdue</span>`:"nothing overdue")(openTasks().filter(t=>t.nextDate&&t.nextDate<today()).length)}</div></div>
+    </div>
+    <div class="grid2">
+      <div class="card"><h3>Lead pipeline</h3><div class="sub">count by stage — sourcing → escrow</div>
+        <div class="chart-wrap">${hbarChart({rows:funnelRows, fmt:v=>v})}</div></div>
+      <div class="card"><h3>Cash position over time</h3><div class="sub">cumulative fund cash, all activity</div>
+        <div class="chart-wrap">${lineChart({labels:mc.labels, series:[{name:"Cash", color:CV("--s1"), values:mc.cum}]})}</div></div>
+      <div class="card"><h3>Construction budget vs spent</h3><div class="sub">by active project</div>
+        ${legendHtml(budgetSeries)}
+        <div class="chart-wrap">${barChart({labels:projLabels, series:budgetSeries})}</div></div>
+      <div class="card"><h3>Opportunity snapshot</h3><div class="sub">active deals — projected outcome at current assumptions</div>
+        <table class="data"><thead><tr><th>Property</th><th>Strategy</th><th>Stage</th><th class="num">Proj. profit</th><th>Verdict</th></tr></thead>
+        <tbody>${dealsSnap || `<tr><td colspan="5" class="empty">No active deals</td></tr>`}</tbody></table></div>
+      <div class="card"><h3>Coordination — next actions</h3><div class="sub">what you owe escrow, lenders, agents &amp; investors · full list in Comms</div>
+        ${openTasks().slice(0,8).map(m=>`<div class="task">
+          <input type="checkbox" onchange="toggleTask('${m.id}')" title="Mark done">
+          <div class="tmain"><div>${esc(m.nextAction)}</div>
+            <div class="tsub">${m.dealId?esc(S.deals.find(d=>d.id===m.dealId)?.addr||"")+" · ":""}${esc(contactName(m.who))}</div></div>
+          <span class="due ${dueClass(m.nextDate)}">${m.nextDate?fmtDate(m.nextDate):""}</span>
+        </div>`).join("") || `<div class="empty">No open next actions</div>`}
+        <div style="margin-top:8px"><button class="btn sm" onclick="showView('comms')">Open Comms →</button></div></div>
+    </div>`;
+}
+
+/* ============ LEADS ============ */
+const leadFields = [
+  {key:"addr", label:"Address"}, {key:"area", label:"Area / ZIP"},
+  {key:"source", label:"Source", type:"select", opts:["Probate","Foreclosure list","Bankruptcy filing","Driving for dollars","Direct mail","Wholesaler","Referral","MLS","Other"]},
+  {key:"strategy", label:"Strategy", type:"select", opts:["Flip","BRRRR","ADU","Wholesale","Hold","Ground-Up"]},
+  {key:"stage", label:"Stage", type:"select", opts:LEAD_STAGES},
+  {key:"ask", label:"Asking price ($)", type:"number"},
+  {key:"arv", label:"Est. ARV ($)", type:"number"},
+  {key:"rehab", label:"Est. rehab ($)", type:"number"},
+  {key:"owner", label:"Owner / contact"}, {key:"phone", label:"Phone"},
+  {key:"notes", label:"Notes", type:"textarea", full:true}
+];
+function renderLeads(){
+  const chips = LEAD_STAGES.map((st,i)=>`<span class="pill" style="border-color:transparent;background:var(--wash)"><i style="width:9px;height:9px;border-radius:3px;background:${ORD[i]};display:inline-block"></i>${st} · <b>${S.leads.filter(l=>l.stage===st).length}</b></span>`).join(" ");
+  const rows = S.leads.map(l=>{
+    const spread = (l.arv||0)*S.settings.maoPct/100 - (l.rehab||0) - (l.ask||0);
+    return `<tr>
+      <td><span class="addr">${esc(l.addr)}<span class="area">${esc(l.area)} · ${esc(l.source)}</span></span></td>
+      <td><span class="strat">${esc((l.strategy||"").toUpperCase())}</span></td>
+      <td><span class="pill stage">${esc(l.stage)}</span></td>
+      <td class="num">${l.ask?money(l.ask):"—"}</td>
+      <td class="num">${l.arv?money(l.arv):"—"}</td>
+      <td class="num" data-tip="MAO (${S.settings.maoPct}% ARV − rehab) minus ask">${l.ask&&l.arv?`<span style="color:${spread>=0?"var(--good-text)":"var(--critical)"};font-weight:650">${money(spread)}</span>`:"—"}</td>
+      <td>${esc(l.owner||"")}<div class="hint">${esc(l.phone||"")}</div></td>
+      <td class="right" style="white-space:nowrap">
+        <button class="btn sm" onclick="editLead('${l.id}')">Edit</button>
+        <button class="btn sm" title="Convert to deal" onclick="leadToDeal('${l.id}')">→ Deal</button>
+        <button class="btn sm danger" onclick="delLead('${l.id}')">✕</button>
+      </td></tr>`;
+  }).join("");
+  $("#v-leads").innerHTML = `
+    <div class="view-head"><h2>Leads</h2><div class="spacer"></div>
+      <button class="btn primary" onclick="editLead(null)">+ Add lead</button></div>
+    <div class="card" style="padding:12px 16px"><div class="legend" style="margin:0">${chips}</div></div>
+    <div class="card">
+      <table class="data"><thead><tr><th>Property</th><th>Strategy</th><th>Stage</th><th class="num">Ask</th><th class="num">Est. ARV</th><th class="num">MAO spread</th><th>Contact</th><th></th></tr></thead>
+      <tbody>${rows || `<tr><td colspan="8" class="empty">No leads yet — hit “+ Add lead”</td></tr>`}</tbody></table>
+    </div>`;
+}
+function editLead(id){
+  const l = id ? S.leads.find(x=>x.id===id) : {id:"L"+uid(), stage:"New", strategy:"Flip", source:"Probate", created:new Date().toISOString().slice(0,10)};
+  openForm(id?"Edit lead":"New lead", leadFields, l, o=>{ if(!id) S.leads.unshift(o); renderAll(); });
+}
+function delLead(id){ confirmDel("Delete this lead?", ()=>{ S.leads = S.leads.filter(l=>l.id!==id); renderAll(); }); }
+function leadToDeal(id){
+  const l = S.leads.find(x=>x.id===id); if(!l) return;
+  S.deals.unshift({ id:"D"+uid(), addr:l.addr, area:l.area, strategy:l.strategy==="Hold"?"BRRRR":l.strategy, stage:"Analyzing",
+    arv:+l.arv||0, purchase:+l.ask||0, rehab:+l.rehab||0, holdMonths:6, rentMo:0, notes:"From lead ("+l.source+"). "+(l.notes||""),
+    team:{agent:"", escrow:"", title:"", lender:"", inspector:""} });
+  l.stage = "Under Contract";
+  selDeal = S.deals[0].id;
+  showView("deals"); renderAll();
+}
+
+/* ============ DEALS + UNDERWRITING ============ */
+let selDeal = "D1";
+function gotoDeal(id){ selDeal = id; showView("deals"); renderAll(); }
+function renderDeals(){
+  const st = S.settings;
+  const rows = S.deals.map(d=>{
+    const u = underwrite(d);
+    return `<tr class="rowlink${d.id===selDeal?'" style="background:var(--wash)':''}" onclick="selDeal='${d.id}';renderDeals()">
+      <td><span class="addr">${esc(d.addr)}<span class="area">${esc(d.area)}</span></span></td>
+      <td><span class="strat">${esc(d.strategy.toUpperCase())}</span></td>
+      <td><span class="pill stage">${esc(d.stage)}</span></td>
+      <td class="num">${money(d.arv||0)}</td>
+      <td class="num">${money(d.purchase||0)}</td>
+      <td class="num">${money(u.profit||0)}</td>
+      <td><span class="pill ${u.verdict==="ok"?"ok":u.verdict==="warn"?"warn":"bad"}">${u.verdict==="ok"?"✓ Pencils":u.verdict==="warn"?"△ Tight":"✕ Thin"}</span></td>
+    </tr>`;
+  }).join("");
+  const d = S.deals.find(x=>x.id===selDeal) || S.deals[0];
+  $("#v-deals").innerHTML = `
+    <div class="view-head"><h2>Deals & Underwriting</h2><div class="spacer"></div>
+      <button class="btn" onclick="editAssumptions()">⚙ Assumptions</button>
+      <button class="btn primary" onclick="editDeal(null)">+ Add deal</button></div>
+    <div class="card">
+      <table class="data"><thead><tr><th>Property</th><th>Strategy</th><th>Stage</th><th class="num">ARV</th><th class="num">Purchase</th><th class="num">Proj. profit</th><th>Verdict</th></tr></thead>
+      <tbody>${rows || `<tr><td colspan="7" class="empty">No deals yet</td></tr>`}</tbody></table>
+    </div>
+    ${d ? uwPanel(d) + coordPanel(d) : ""}`;
+}
+function uwPanel(d){
+  const u = underwrite(d), st = S.settings;
+  const inp = (k,label,step)=>`<div><label>${label}</label><input type="number" step="${step||1000}" value="${d[k]||0}" onchange="updDeal('${d.id}','${k}',this.value)"></div>`;
+  const isRent = d.strategy==="BRRRR"||d.strategy==="Hold";
+  let stats = "";
+  if(d.strategy==="Wholesale"){
+    stats = stat("MAO ("+st.maoPct+"% rule)", money(u.mao)) + stat("Contract price", money(d.purchase||0)) +
+            stat("Assignment spread", money(u.fee)) + stat("End-buyer rehab", money(d.rehab||0));
+  } else if(isRent){
+    stats = stat("All-in cost", money(u.allIn)) + stat("Refi loan ("+st.refiLtvPct+"% ARV)", money(u.refiLoan)) +
+            stat("NOI / yr", money(u.noi)) + stat("Debt service / mo", money(u.debtSvcMo)) +
+            stat("DSCR @ "+st.dscrRate+"%", u.dscr.toFixed(2)) + stat("Cash flow / mo", money(u.cashFlowMo)) +
+            stat("Cash out at refi", money(u.cashOut)) + stat("Capital left in deal", money(u.capLeft));
+  } else if(d.strategy==="Ground-Up"){
+    stats = stat("Land / site", money(d.purchase||0)) + stat("Hard construction (SGC)", money(d.rehab||0)) +
+            stat("Soft costs ("+st.softCostPct+"%)", money(u.soft)) + stat("All-in cost", money(u.allIn)) +
+            stat("Financing (pts + int)", money(u.points+u.interest)) + stat("Selling costs ("+st.sellCostPct+"%)", money(u.sellCosts)) +
+            stat("Development profit", money(u.profit)) + stat("Margin on cost (min "+st.largeMinMarginPct+"%)", pctf(u.marginPct)) +
+            stat("Large tier cap", moneyK(st.largeMaxCost));
+  } else {
+    stats = stat("MAO ("+st.maoPct+"% ARV − rehab)", money(u.mao)) + stat("All-in cost", money(u.allIn)) +
+            stat("Hard money interest", money(u.interest)) + stat("Points ("+st.hardMoneyPoints+")", money(u.points)) +
+            stat("Selling costs ("+st.sellCostPct+"%)", money(u.sellCosts)) + stat("Projected profit", money(u.profit)) +
+            stat("ROI on cost", pctf(u.roiPct)) + stat("Room under MAO", money(-u.overMao));
+  }
+  return `<div class="card"><h3>Underwrite: ${esc(d.addr)}</h3><div class="sub">${esc(d.strategy)} · edits recalc instantly · assumptions: HM ${st.hardMoneyRate}% + ${st.hardMoneyPoints} pts, DSCR ${st.dscrRate}%, min flip profit ${moneyK(st.minFlipProfit)} · Large Projects tier: ≤${moneyK(st.largeMaxCost)} all-in, ≥${st.largeMinMarginPct}% margin${d.strategy==="Ground-Up"?" · Purchase = land/site, Rehab = hard construction":""}</div>
+    <div class="uw">
+      <div class="frm" style="grid-template-columns:1fr 1fr; align-content:start">
+        ${inp("arv","ARV ($)")} ${inp("purchase","Purchase ($)")}
+        ${inp("rehab","Rehab ($)")} ${inp("holdMonths","Hold (months)",1)}
+        ${isRent?inp("rentMo","Rent / mo ($)",50):""}
+        <div><label>Strategy</label><select onchange="updDeal('${d.id}','strategy',this.value)">${["Flip","BRRRR","ADU","Wholesale","Hold","Ground-Up"].map(o=>`<option ${o===d.strategy?"selected":""}>${o}</option>`).join("")}</select></div>
+        <div><label>Stage</label><select onchange="updDeal('${d.id}','stage',this.value)">${DEAL_STAGES.map(o=>`<option ${o===d.stage?"selected":""}>${o}</option>`).join("")}</select></div>
+        <div class="full"><label>Notes</label><textarea onchange="updDeal('${d.id}','notes',this.value)">${esc(d.notes||"")}</textarea></div>
+        <div class="full" style="display:flex;gap:8px">
+          <button class="btn sm" onclick="dealToProject('${d.id}')">→ Start project</button>
+          <button class="btn sm danger" onclick="delDeal('${d.id}')">Delete deal</button>
+        </div>
+      </div>
+      <div class="uw-out">
+        <div class="verdict ${u.verdict==="ok"?"ok":u.verdict==="warn"?"warn":"bad"}">${u.verdict==="ok"?"✓":u.verdict==="warn"?"△":"✕"} ${esc(u.verdictText)}</div>
+        ${stats}
+      </div>
+    </div></div>`;
+}
+const stat = (k,v,hide) => hide?"":`<div class="uw-stat"><div class="k">${k}</div><div class="v">${v}</div></div>`;
+function updDeal(id,k,v){
+  const d = S.deals.find(x=>x.id===id); if(!d) return;
+  d[k] = (["arv","purchase","rehab","holdMonths","rentMo"].includes(k)) ? (parseFloat(v)||0) : v;
+  renderDeals(); renderDash();
+}
+function editDeal(id){
+  const d = {id:"D"+uid(), strategy:"Flip", stage:"Analyzing", arv:0, purchase:0, rehab:0, holdMonths:6, rentMo:0, team:{agent:"", escrow:"", title:"", lender:"", inspector:""}};
+  openForm("New deal", [
+    {key:"addr", label:"Address"}, {key:"area", label:"Area / ZIP"},
+    {key:"strategy", label:"Strategy", type:"select", opts:["Flip","BRRRR","ADU","Wholesale","Hold","Ground-Up"]},
+    {key:"stage", label:"Stage", type:"select", opts:DEAL_STAGES},
+    {key:"arv", label:"ARV ($)", type:"number"}, {key:"purchase", label:"Purchase ($)", type:"number"},
+    {key:"rehab", label:"Rehab ($)", type:"number"}, {key:"holdMonths", label:"Hold (months)", type:"number"},
+    {key:"rentMo", label:"Rent / mo (if rental)", type:"number"},
+    {key:"notes", label:"Notes", type:"textarea", full:true}
+  ], d, o=>{ S.deals.unshift(o); selDeal=o.id; renderAll(); });
+}
+function delDeal(id){ confirmDel("Delete this deal?", ()=>{ S.deals=S.deals.filter(d=>d.id!==id); selDeal=S.deals[0]?.id; renderAll(); }); }
+function dealToProject(id){
+  const d = S.deals.find(x=>x.id===id); if(!d) return;
+  S.projects.push({ id:"P"+uid(), name:d.addr.split(",")[0]+" "+d.strategy, addr:d.addr+", "+d.area, strategy:d.strategy, stage:"Pre-construction",
+    budget:+d.rehab||0, startDate:"", endDate:"", pct:0,
+    cats:[{name:"General", budget:+d.rehab||0, actual:0}], milestones:[] });
+  d.stage = "Closed";
+  showView("projects"); renderAll();
+}
+function editAssumptions(){
+  openForm("Underwriting assumptions", [
+    {key:"hardMoneyRate", label:"Hard money rate (%)", type:"number", step:0.1},
+    {key:"hardMoneyPoints", label:"Points", type:"number", step:0.5},
+    {key:"dscrRate", label:"DSCR rate (%)", type:"number", step:0.05},
+    {key:"maoPct", label:"MAO rule (% of ARV)", type:"number", step:1},
+    {key:"minFlipProfit", label:"Min flip profit ($)", type:"number"},
+    {key:"sellCostPct", label:"Selling costs (% ARV)", type:"number", step:0.5},
+    {key:"buyClosePct", label:"Buy closing (% price)", type:"number", step:0.25},
+    {key:"expenseRatioPct", label:"Rental expense ratio (%)", type:"number", step:1},
+    {key:"refiLtvPct", label:"Refi LTV (% ARV)", type:"number", step:1},
+    {key:"fundTarget", label:"Fund raise target ($)", type:"number"},
+    {key:"largeMaxCost", label:"Large Projects: max all-in cost ($)", type:"number"},
+    {key:"largeMinMarginPct", label:"Large Projects: min margin on cost (%)", type:"number", step:0.5},
+    {key:"softCostPct", label:"Ground-up soft costs (% of hard)", type:"number", step:0.5}
+  ], S.settings, ()=>renderAll());
+}
+/* ============ PROJECTS ============ */
+function renderProjects(){
+  const cards = S.projects.map(p=>{
+    const spent = p.cats.reduce((a,c)=>a+(+c.actual||0),0);
+    const bud = p.cats.reduce((a,c)=>a+(+c.budget||0),0) || (+p.budget||0);
+    const over = spent - bud*(p.pct/100 || 0);
+    const catRows = p.cats.map((c,ci)=>{
+      const varc = (+c.actual||0)-(+c.budget||0);
+      const done = c.budget>0 ? Math.min(100, c.actual/c.budget*100) : 0;
+      return `<tr>
+        <td>${esc(c.name)}</td>
+        <td class="num">${money(c.budget)}</td>
+        <td class="num"><input type="number" step="500" value="${c.actual||0}" style="width:90px;text-align:right;font:inherit;font-variant-numeric:tabular-nums;background:var(--page);border:1px solid var(--border);border-radius:6px;padding:3px 6px;color:var(--ink-1)" onchange="updCat('${p.id}',${ci},this.value)"></td>
+        <td class="num" style="color:${varc>0?"var(--critical)":"var(--good-text)"};font-weight:650">${varc===0?"—":(varc>0?"+":"")+money(varc).replace("$","$")}</td>
+        <td><div class="prog" data-tip="${esc(c.name)}: <b>${pctf(done)}</b> of budget spent"><i style="width:${done}%;background:${varc>0?"var(--critical)":"var(--s1)"}"></i></div></td>
+      </tr>`;
+    }).join("");
+    const miles = p.milestones.map((m,mi)=>`
+      <span class="pill ${m.done?"ok":""}" style="cursor:pointer" data-tip="${m.done?"Done":"Due"} ${fmtDate(m.date)} — click to toggle" onclick="toggleMile('${p.id}',${mi})">${m.done?"✓":"○"} ${esc(m.name)} <span class="muted">${fmtDate(m.date)}</span></span>`).join(" ");
+    return `<div class="card">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <div style="flex:1;min-width:220px"><h3 class="mb0">${esc(p.name)}</h3><div class="sub" style="margin:0">${esc(p.addr)} · <span class="strat">${esc(p.strategy.toUpperCase())}</span> · ${fmtDate(p.startDate)} → ${fmtDate(p.endDate)}</div></div>
+        <span class="pill stage">${esc(p.stage)}</span>
+        <div style="min-width:150px">
+          <div class="hint" style="display:flex;justify-content:space-between"><span>Complete</span><b>${p.pct||0}%</b></div>
+          <div class="prog"><i style="width:${p.pct||0}%"></i></div>
+        </div>
+        <button class="btn sm" onclick="editProject('${p.id}')">Edit</button>
+        <button class="btn sm danger" onclick="delProject('${p.id}')">✕</button>
+      </div>
+      <div style="display:flex;gap:18px;flex-wrap:wrap;margin:10px 0 6px">
+        <span class="hint">Budget <b style="color:var(--ink-1)">${money(bud)}</b></span>
+        <span class="hint">Spent <b style="color:var(--ink-1)">${money(spent)}</b></span>
+        <span class="hint">Remaining <b style="color:${bud-spent<0?"var(--critical)":"var(--good-text)"}">${money(bud-spent)}</b></span>
+        ${p.pct>0?`<span class="hint" data-tip="Spend vs earned value (budget × % complete)">Pace <b style="color:${over>0?"var(--critical)":"var(--good-text)"}">${over>0?"+"+money(over)+" hot":"on budget"}</b></span>`:""}
+      </div>
+      <table class="data"><thead><tr><th>Cost category</th><th class="num">Budget</th><th class="num">Actual</th><th class="num">Variance</th><th style="width:120px">Spent</th></tr></thead>
+      <tbody>${catRows}</tbody></table>
+      ${miles?`<div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">${miles}</div>`:""}
+    </div>`;
+  }).join("");
+  $("#v-projects").innerHTML = `
+    <div class="view-head"><h2>Projects & Construction</h2><div class="spacer"></div>
+      <button class="btn primary" onclick="editProject(null)">+ Add project</button></div>
+    ${cards || `<div class="card"><div class="empty">No projects — convert a closed deal or add one</div></div>`}`;
+}
+function updCat(pid, ci, v){ const p=S.projects.find(x=>x.id===pid); if(p){ p.cats[ci].actual=parseFloat(v)||0; renderProjects(); renderDash(); } }
+function toggleMile(pid, mi){ const p=S.projects.find(x=>x.id===pid); if(p){ p.milestones[mi].done=!p.milestones[mi].done; renderProjects(); } }
+function editProject(id){
+  const p = id ? S.projects.find(x=>x.id===id) : {id:"P"+uid(), stage:"Pre-construction", strategy:"Flip", pct:0, budget:0, cats:[{name:"General", budget:0, actual:0}], milestones:[]};
+  openForm(id?"Edit project":"New project", [
+    {key:"name", label:"Project name"}, {key:"addr", label:"Address"},
+    {key:"strategy", label:"Strategy", type:"select", opts:["Flip","BRRRR","ADU","Wholesale","Hold","Ground-Up"]},
+    {key:"stage", label:"Stage", type:"select", opts:["Pre-construction","Construction","Punch list","Listed","Complete"]},
+    {key:"budget", label:"Total budget ($)", type:"number"},
+    {key:"pct", label:"% complete", type:"number", step:5},
+    {key:"startDate", label:"Start (YYYY-MM-DD)"}, {key:"endDate", label:"Target finish (YYYY-MM-DD)"}
+  ], p, o=>{ if(!id) S.projects.push(o); renderAll(); });
+}
+function delProject(id){ confirmDel("Delete this project?", ()=>{ S.projects=S.projects.filter(p=>p.id!==id); renderAll(); }); }
+
+/* ============ CREW ============ */
+function renderCrew(){
+  const projName = pid => S.projects.find(p=>p.id===pid)?.name || "";
+  const rows = S.crew.map(c=>`<tr>
+    <td><span class="addr">${esc(c.name)}</span></td>
+    <td>${esc(c.trade)}</td>
+    <td class="num">${c.rate?("$"+c.rate+"/hr"):"bid"}</td>
+    <td>${esc(projName(c.assignment)||"—")}</td>
+    <td><span class="pill ${c.status==="On job"?"ok":c.status==="Available"?"stage":""}">${esc(c.status)}</span></td>
+    <td>${esc(c.phone||"")}</td>
+    <td class="right" style="white-space:nowrap">
+      <button class="btn sm" onclick="editCrew('${c.id}')">Edit</button>
+      <button class="btn sm danger" onclick="delCrew('${c.id}')">✕</button>
+    </td></tr>`).join("");
+  $("#v-crew").innerHTML = `
+    <div class="view-head"><h2>Crew & Subs</h2><div class="spacer"></div>
+      <button class="btn primary" onclick="editCrew(null)">+ Add crew</button></div>
+    <div class="card">
+      <table class="data"><thead><tr><th>Name</th><th>Trade</th><th class="num">Rate</th><th>Assignment</th><th>Status</th><th>Phone</th><th></th></tr></thead>
+      <tbody>${rows || `<tr><td colspan="7" class="empty">No crew yet</td></tr>`}</tbody></table>
+    </div>`;
+}
+function editCrew(id){
+  const c = id ? S.crew.find(x=>x.id===id) : {id:"C"+uid(), status:"Available"};
+  openForm(id?"Edit crew":"New crew member / sub", [
+    {key:"name", label:"Name"}, {key:"trade", label:"Trade / license"},
+    {key:"rate", label:"Rate ($/hr, 0 = bid work)", type:"number"},
+    {key:"phone", label:"Phone"},
+    {key:"assignment", label:"Assigned project", type:"select", opts:[{v:"",l:""}].concat(S.projects.map(p=>({v:p.id,l:p.name})))},
+    {key:"status", label:"Status", type:"select", opts:["On job","Scheduled","Available","Unavailable"]}
+  ], c, o=>{ if(!id) S.crew.push(o); renderAll(); });
+}
+function delCrew(id){ confirmDel("Remove this crew member?", ()=>{ S.crew=S.crew.filter(c=>c.id!==id); renderAll(); }); }
+
+/* ============ INVESTORS ============ */
+function renderInvestors(){
+  const a = agg();
+  const names = S.investors.map(i=>i.name.split(" ")[0]);
+  const capSeries = [
+    {name:"Committed", color:CV("--s1"), values:S.investors.map(i=>+i.committed||0)},
+    {name:"Funded", color:CV("--s3"), values:S.investors.map(i=>+i.funded||0)}
+  ];
+  const lastTouch = id => { const ms = S.comms.filter(m=>m.who===id).map(m=>m.date).sort(); return ms.length ? ms[ms.length-1] : ""; };
+  const rows = S.investors.map(i=>{
+    const c = findContact(i.id), lt = lastTouch(i.id);
+    return `<tr>
+    <td><span class="addr">${esc(i.name)}<span class="area">${esc(i.type)} · ${esc(i.email||"")}${i.phone?" · "+esc(i.phone):""}</span></span></td>
+    <td class="num">${money(i.committed)}</td>
+    <td class="num">${money(i.funded)}</td>
+    <td class="num">${i.prefPct}% pref</td>
+    <td class="num">${i.splitPct}/${100-i.splitPct}</td>
+    <td><span class="pill stage">${esc(i.docs||"—")}</span></td>
+    <td><span class="pill ${i.status==="Funded"?"ok":i.status==="In diligence"?"warn":"stage"}">${esc(i.status)}</span></td>
+    <td style="white-space:nowrap" class="${lt?"":"muted"}">${lt?fmtDate(lt):"never"}</td>
+    <td class="right" style="white-space:nowrap">${contactBtns(c, "Solid Ground Capital — update")}
+      <button class="btn sm" onclick="logComm('','${i.id}')">Log</button>
+      <button class="btn sm" onclick="editInvestor('${i.id}')">Edit</button>
+      <button class="btn sm danger" onclick="delInvestor('${i.id}')">✕</button>
+    </td></tr>`;}).join("");
+  $("#v-investors").innerHTML = `
+    <div class="view-head"><h2>Investors & Capital</h2><div class="spacer"></div>
+      <button class="btn primary" onclick="editInvestor(null)">+ Add investor</button></div>
+    <div class="tiles">
+      <div class="tile"><div class="k">Raise target</div><div class="v">${moneyK(S.settings.fundTarget)}</div><div class="d">Reg D 506(c) pilot fund</div></div>
+      <div class="tile"><div class="k">Committed</div><div class="v">${moneyK(a.committed)}</div><div class="d"><span class="${a.committed>=S.settings.fundTarget?"up":""}">${pctf(a.committed/S.settings.fundTarget*100)}</span> of target</div></div>
+      <div class="tile"><div class="k">Funded</div><div class="v">${moneyK(a.funded)}</div><div class="d">${pctf(a.committed?a.funded/a.committed*100:0)} of commitments</div></div>
+      <div class="tile"><div class="k">Unfunded commitments</div><div class="v">${moneyK(a.committed-a.funded)}</div><div class="d">callable capital</div></div>
+    </div>
+    <div class="card"><h3>Committed vs funded</h3><div class="sub">by investor</div>
+      ${legendHtml(capSeries)}
+      <div class="chart-wrap">${barChart({labels:names, series:capSeries})}</div></div>
+    <div class="card">
+      <table class="data"><thead><tr><th>Investor</th><th class="num">Committed</th><th class="num">Funded</th><th class="num">Pref</th><th class="num">Split (LP/GP)</th><th>Docs</th><th>Status</th><th>Last touch</th><th></th></tr></thead>
+      <tbody>${rows || `<tr><td colspan="9" class="empty">No investors yet</td></tr>`}</tbody></table>
+    </div>`;
+}
+function editInvestor(id){
+  const i = id ? S.investors.find(x=>x.id===id) : {id:"I"+uid(), prefPct:8, splitPct:70, status:"Committed", committed:0, funded:0};
+  openForm(id?"Edit investor":"New investor", [
+    {key:"name", label:"Name"}, {key:"type", label:"Type (individual, trust, LLC…)"},
+    {key:"committed", label:"Committed ($)", type:"number"}, {key:"funded", label:"Funded ($)", type:"number"},
+    {key:"prefPct", label:"Preferred return (%)", type:"number", step:0.5},
+    {key:"splitPct", label:"LP split (%)", type:"number", step:5},
+    {key:"status", label:"Status", type:"select", opts:["In diligence","Committed","Partially funded","Funded","Exited"]},
+    {key:"docs", label:"Docs status", type:"select", opts:["—","NDA sent","Deck sent","Sub docs sent","Docs signed","Funds wired"]},
+    {key:"email", label:"Email"}, {key:"phone", label:"Phone"}
+  ], i, o=>{ if(!id) S.investors.push(o); renderAll(); });
+}
+function delInvestor(id){ confirmDel("Remove this investor?", ()=>{ S.investors=S.investors.filter(i=>i.id!==id); renderAll(); }); }
+
+/* ============ FINANCIALS ============ */
+function renderMoney(){
+  const a = agg();
+  const mc = monthlyCash();
+  const byType = {};
+  S.transactions.forEach(t=>{ byType[t.type]=(byType[t.type]||0)+Math.abs(+t.amount||0); });
+  const typeOrder = ["Capital in","Sale proceeds","Acquisition","Construction draw","Operating expense","Distribution"];
+  const typeRows = typeOrder.filter(t=>byType[t]).map((t,i)=>({label:t, value:byType[t], color:["Capital in","Sale proceeds"].includes(t)?CV("--s1"):CV("--s2"), tip:`${t}: <b>${money(byType[t])}</b> total`}));
+  const rows = S.transactions.slice().sort((a,b)=>b.date.localeCompare(a.date)).map(t=>`<tr>
+    <td style="white-space:nowrap">${fmtDate(t.date)}</td>
+    <td><span class="pill stage">${esc(t.type)}</span></td>
+    <td>${esc(S.projects.find(p=>p.id===t.project)?.name || "Fund level")}</td>
+    <td>${esc(t.note||"")}</td>
+    <td class="num" style="font-weight:650;color:${t.amount>=0?"var(--good-text)":"var(--ink-1)"}">${money(t.amount)}</td>
+    <td class="right"><button class="btn sm danger" onclick="delTx('${t.id}')">✕</button></td>
+  </tr>`).join("");
+  $("#v-money").innerHTML = `
+    <div class="view-head"><h2>Financials</h2><div class="spacer"></div>
+      <button class="btn primary" onclick="addTx()">+ Add transaction</button></div>
+    <div class="tiles">
+      <div class="tile"><div class="k">Cash position</div><div class="v">${moneyK(a.cash)}</div><div class="d">fund account, all activity</div></div>
+      <div class="tile"><div class="k">Capital in</div><div class="v">${moneyK(byType["Capital in"]||0)}</div><div class="d">investor wires received</div></div>
+      <div class="tile"><div class="k">Deployed</div><div class="v">${moneyK((byType["Acquisition"]||0)+(byType["Construction draw"]||0))}</div><div class="d">acquisitions + construction</div></div>
+      <div class="tile"><div class="k">Distributed</div><div class="v">${moneyK(byType["Distribution"]||0)}</div><div class="d">paid to investors</div></div>
+    </div>
+    <div class="grid2">
+      <div class="card"><h3>Cash position over time</h3><div class="sub">cumulative</div>
+        <div class="chart-wrap">${lineChart({labels:mc.labels, series:[{name:"Cash", color:CV("--s1"), values:mc.cum}]})}</div></div>
+      <div class="card"><h3>Money in vs money out</h3><div class="sub">totals by type — blue in, orange out</div>
+        <div class="chart-wrap">${hbarChart({rows:typeRows, fmt:moneyK})}</div></div>
+    </div>
+    <div class="card">
+      <table class="data"><thead><tr><th>Date</th><th>Type</th><th>Project</th><th>Note</th><th class="num">Amount</th><th></th></tr></thead>
+      <tbody>${rows || `<tr><td colspan="6" class="empty">No transactions yet</td></tr>`}</tbody></table>
+    </div>`;
+}
+function addTx(){
+  const t = {id:"T"+uid(), date:new Date().toISOString().slice(0,10), type:"Capital in", amount:0};
+  openForm("New transaction", [
+    {key:"date", label:"Date (YYYY-MM-DD)"},
+    {key:"type", label:"Type", type:"select", opts:["Capital in","Sale proceeds","Acquisition","Construction draw","Operating expense","Distribution","Other"]},
+    {key:"amount", label:"Amount ($, negative = out)", type:"number"},
+    {key:"project", label:"Project", type:"select", opts:[{v:"",l:"Fund level"}].concat(S.projects.map(p=>({v:p.id,l:p.name})))},
+    {key:"note", label:"Note", full:true}
+  ], t, o=>{ S.transactions.push(o); renderAll(); });
+}
+function delTx(id){ confirmDel("Delete this transaction?", ()=>{ S.transactions=S.transactions.filter(t=>t.id!==id); renderAll(); }); }
+
+/* ============ DEAL SCOUT ============ */
+const SCOUT_TYPES = {flip:"Flip", mf:"Multifamily", adu:"ADU / SB9", large:"Large / New build", land:"Land", other:"Other"};
+const SCOUT_STATUS = ["New","Reviewing","Offer","Converted","Passed"];
+function scoutStrategy(t){ return t==="mf" ? "BRRRR" : t==="adu" ? "ADU" : (t==="large"||t==="land") ? "Ground-Up" : "Flip"; }
+function scoutCard(sdeal){
+  const d = sdeal, st = S.settings;
+  const mao = (d.arv>0) ? st.maoPct/100*d.arv - (d.rehab||0) : null;
+  const perUnit = (d.units>0 && d.price>0) ? d.price/d.units : null;
+  const g = (d.grade||"").toUpperCase();
+  const gCls = g.startsWith("A")?"gA":g.startsWith("B")?"gB":g.startsWith("C")?"gC":g?"gD":"";
+  const p = d.partnerId ? findContact(d.partnerId) : null;
+  const nums = [
+    d.price?`<div><div class="k">Price</div><div class="v">${moneyK(d.price)}</div></div>`:"",
+    perUnit?`<div><div class="k">$/unit</div><div class="v">${moneyK(perUnit)}</div></div>`:"",
+    d.units?`<div><div class="k">Units</div><div class="v">${d.units}</div></div>`:"",
+    d.arv?`<div><div class="k">ARV</div><div class="v">${moneyK(d.arv)}</div></div>`:"",
+    d.rehab?`<div><div class="k">Rehab</div><div class="v">${moneyK(d.rehab)}</div></div>`:"",
+    mao!==null?`<div><div class="k">MAO ${st.maoPct}%</div><div class="v" style="color:${d.price&&d.price<=mao?"var(--good-text)":"var(--critical)"}">${moneyK(mao)}</div></div>`:""
+  ].join("");
+  return `<div class="scard">
+    <div class="top">
+      <div><div class="addr">${d.url?`<a href="${esc(d.url)}" target="_blank" rel="noopener">${esc(d.addr)}</a>`:esc(d.addr)}</div>
+        <div class="city">${esc(d.area||"")} · ${esc(SCOUT_TYPES[d.type]||d.type||"")}${d.offMarket?' <span class="offtag">Off-market</span>':""}</div></div>
+      ${g?`<span class="badge ${gCls}">${esc(g)}</span>`:""}
+    </div>
+    ${nums?`<div class="snums">${nums}</div>`:""}
+    ${d.notes?`<div style="font-size:12.5px;color:var(--ink-2)">${esc(d.notes)}</div>`:""}
+    ${d.agentInfo?`<div class="hint">☎ ${esc(d.agentInfo)}</div>`:""}
+    ${p?`<div style="display:flex;align-items:center;gap:6px"><span class="chip">${esc(p.label)}</span>${contactBtns(p, "Re: "+d.addr)}</div>`:""}
+    <div class="foot">
+      <select onchange="updScout('${d.id}','status',this.value)" style="font:inherit;font-size:12px;padding:3px 6px;border-radius:6px;border:1px solid var(--border);background:var(--page);color:var(--ink-1)">${SCOUT_STATUS.map(s=>`<option ${s===d.status?"selected":""}>${s}</option>`).join("")}</select>
+      <button class="btn sm" onclick="scoutToLead('${d.id}')">→ Lead</button>
+      <button class="btn sm" onclick="scoutToDeal('${d.id}')">→ Deal</button>
+      <button class="btn sm" onclick="editScout('${d.id}')">Edit</button>
+      <button class="btn sm danger" onclick="delScout('${d.id}')">✕</button>
+    </div>
+  </div>`;
+}
+function renderScout(){
+  const st = S.settings;
+  const scoutList = S.scout.filter(x=>x.src!=="agent" && !x.offMarket);
+  const agentList = S.scout.filter(x=>x.src==="agent" || x.offMarket);
+  const inbox = S.scout.filter(x=>["New","Reviewing"].includes(x.status)).length;
+  const conv = S.scout.filter(x=>x.status==="Converted").length;
+  $("#v-scout").innerHTML = `
+    <div class="view-head"><h2>Deal Scout</h2><div class="spacer"></div>
+      <a class="btn" href="${esc(st.scoutDashUrl)}" target="_blank" rel="noopener">🔒 Live dashboard</a>
+      <a class="btn" href="${esc(st.scoutPortalUrl)}" target="_blank" rel="noopener">👥 Investor portal</a>
+      <button class="btn" onclick="importScout()">⇪ Import JSON</button>
+      <button class="btn primary" onclick="editScout(null)">+ Add deal</button></div>
+    <div class="tiles">
+      <div class="tile"><div class="k">Inbox</div><div class="v">${inbox}</div><div class="d">new or reviewing</div></div>
+      <div class="tile"><div class="k">Off-market / agent</div><div class="v">${agentList.length}</div><div class="d">pocket &amp; agent-sourced</div></div>
+      <div class="tile"><div class="k">Converted</div><div class="v">${conv}</div><div class="d">moved into leads / deals</div></div>
+      <div class="tile"><div class="k">Buy box</div><div class="v">${st.maoPct}% · ${moneyK(st.minFlipProfit)}</div><div class="d">MAO rule · min profit — edit in Deals ⚙</div></div>
+    </div>
+    <div class="card"><h3>Daily scout finds</h3><div class="sub">from the 6am weekday sweep — paste the day's catalog with Import JSON, then push keepers to Leads or Deals</div>
+      <div class="scout-grid">${scoutList.map(scoutCard).join("") || `<div class="empty" style="grid-column:1/-1">Nothing imported yet — hit ⇪ Import JSON or + Add deal</div>`}</div></div>
+    <div class="card"><h3>Agent &amp; off-market deals</h3><div class="sub">pocket listings and deals your agents bring — link each one to its agent in Partners</div>
+      <div class="scout-grid">${agentList.map(scoutCard).join("") || `<div class="empty" style="grid-column:1/-1">No off-market deals logged — add one and link the agent</div>`}</div></div>`;
+}
+const scoutFields = () => [
+  {key:"addr", label:"Address"}, {key:"area", label:"Area / ZIP"},
+  {key:"type", label:"Type", type:"select", opts:Object.keys(SCOUT_TYPES).map(k=>({v:k,l:SCOUT_TYPES[k]}))},
+  {key:"src", label:"Source", type:"select", opts:[{v:"scout",l:"Daily scout sweep"},{v:"agent",l:"Agent-sourced"}]},
+  {key:"offMarket", label:"Off-market?", type:"select", opts:[{v:"",l:"No — listed"},{v:"1",l:"Yes — off-market / pocket"}]},
+  {key:"partnerId", label:"Agent / source partner", type:"select", opts:partnerOpts("Agent").concat(partnersByCat("Wholesaler").map(p=>({v:p.id,l:p.name+" (Wholesaler)"})))},
+  {key:"price", label:"Price / ask ($)", type:"number"}, {key:"units", label:"Units", type:"number"},
+  {key:"arv", label:"ARV ($)", type:"number"}, {key:"rehab", label:"Rehab ($)", type:"number"},
+  {key:"grade", label:"Grade (A- / B …)"}, {key:"status", label:"Status", type:"select", opts:SCOUT_STATUS},
+  {key:"url", label:"Listing URL", full:true},
+  {key:"agentInfo", label:"Listing agent (name · brokerage · phone)", full:true},
+  {key:"notes", label:"Angle / notes", type:"textarea", full:true}
+];
+function editScout(id){
+  const d = id ? S.scout.find(x=>x.id===id) : {id:"SC"+uid(), src:"scout", offMarket:"", type:"flip", status:"New", date:today(), price:0, units:0, arv:0, rehab:0};
+  if(id && d) d.offMarket = d.offMarket ? "1" : "";
+  openForm(id?"Edit scout deal":"New scout / off-market deal", scoutFields(), d, o=>{
+    o.offMarket = !!o.offMarket;
+    if(!id) S.scout.unshift(o);
+    renderAll();
+  });
+}
+function updScout(id,k,v){ const d=S.scout.find(x=>x.id===id); if(d){ d[k]=v; renderScout(); renderDash(); } }
+function delScout(id){ confirmDel("Remove this deal from the scout list?", ()=>{ S.scout=S.scout.filter(x=>x.id!==id); renderAll(); }); }
+function scoutToLead(id){
+  const d = S.scout.find(x=>x.id===id); if(!d) return;
+  S.leads.unshift({ id:"L"+uid(), addr:d.addr, area:d.area, source:d.offMarket?"Other":(d.src==="agent"?"Referral":"MLS"), strategy:scoutStrategy(d.type), stage:"New",
+    ask:+d.price||0, arv:+d.arv||0, rehab:+d.rehab||0, owner:"", phone:"",
+    notes:[(d.offMarket?"OFF-MARKET. ":""),(d.notes||""),(d.agentInfo?" Agent: "+d.agentInfo:""),(d.partnerId?" Source: "+contactName(d.partnerId):"")].join(""), created:today() });
+  d.status = "Converted"; showView("leads"); renderAll();
+}
+function scoutToDeal(id){
+  const d = S.scout.find(x=>x.id===id); if(!d) return;
+  S.deals.unshift({ id:"D"+uid(), addr:d.addr, area:d.area, strategy:scoutStrategy(d.type), stage:"Analyzing",
+    arv:+d.arv||0, purchase:+d.price||0, rehab:+d.rehab||0, holdMonths:d.type==="large"?18:6, rentMo:0,
+    notes:[(d.offMarket?"OFF-MARKET. ":""),(d.notes||""),(d.agentInfo?" Agent: "+d.agentInfo:"")].join(""),
+    team:{agent:d.partnerId||"", escrow:"", title:"", lender:"", inspector:""} });
+  d.status = "Converted"; selDeal = S.deals[0].id; showView("deals"); renderAll();
+}
+function importScout(){
+  const holder = {json:""};
+  openForm("Import Deal Scout JSON", [
+    {key:"json", label:"Paste the catalog JSON (an array of deals, or {\"deals\":[…]}) — keys like addr/address, area/city, price/ask, arv, rehab, units, type, grade, agent, url, notes are all understood", type:"textarea", full:true}
+  ], holder, o=>{
+    try {
+      let data = JSON.parse(o.json);
+      if(data && Array.isArray(data.deals)) data = data.deals;
+      if(!Array.isArray(data)) throw new Error("Expected an array of deals or {deals:[…]}");
+      let n=0;
+      data.forEach(x=>{
+        const addr = x.addr||x.address||x.street||""; if(!addr) return;
+        if(S.scout.some(s=>s.addr.toLowerCase()===addr.toLowerCase())) return; // skip dupes
+        let type = (x.type||"").toLowerCase();
+        if(!SCOUT_TYPES[type]) type = (+x.units||0)>=2 ? "mf" : "flip";
+        S.scout.unshift({ id:"SC"+uid(), src:"scout", offMarket:!!(x.offMarket||x.offmarket),
+          partnerId:"", addr, area:x.area||x.city||x.zip||"", type,
+          grade:x.grade||"", price:+(x.price??x.ask??x.listPrice??0)||0, arv:+x.arv||0, rehab:+x.rehab||0,
+          units:+x.units||0, agentInfo:x.agentInfo||x.agent||x.broker||"", url:x.url||x.link||x.href||"",
+          notes:x.notes||x.angle||x.summary||"", status:"New", date:today() });
+        n++;
+      });
+      renderAll(); showView("scout");
+      alert(n + " deal(s) imported" + (n<data.length ? " ("+(data.length-n)+" skipped — duplicates or missing address)" : ""));
+    } catch(e){ alert("Couldn't import: " + e.message); }
+  });
+}
+
+/* ============ DEAL TEAM & COORDINATION PANEL ============ */
+const TEAM_ROLES = [["agent","Agent","Agent"],["lender","Lender","Lender"],["escrow","Escrow","Escrow"],["title","Title","Title"],["inspector","Inspector","Inspector"]];
+function updTeam(dealId, role, v){
+  const d = S.deals.find(x=>x.id===dealId); if(!d) return;
+  if(!d.team) d.team = {agent:"", escrow:"", title:"", lender:"", inspector:""};
+  d.team[role] = v; renderDeals();
+}
+function emailTeam(dealId){
+  const d = S.deals.find(x=>x.id===dealId); if(!d || !d.team) return;
+  const emails = Object.values(d.team).map(id=>findContact(id)).filter(c=>c&&c.email).map(c=>c.email);
+  if(!emails.length){ alert("No team emails on file yet — assign partners with emails first."); return; }
+  location.href = "mailto:"+encodeURIComponent(emails.join(","))+"?subject="+encodeURIComponent("["+d.addr+"] Coordination update — Solid Ground Capital")+"&body="+encodeURIComponent("Team,\n\nQuick update on "+d.addr+":\n\n• \n\nThanks,\nJavad — Solid Ground Capital\n");
+}
+function coordPanel(d){
+  if(!d) return "";
+  if(!d.team) d.team = {agent:"", escrow:"", title:"", lender:"", inspector:""};
+  const teamRow = TEAM_ROLES.map(([role,label,cat])=>{
+    const c = findContact(d.team[role]);
+    const opts = partnerOpts(cat).map(o=>`<option value="${esc(o.v)}" ${o.v===d.team[role]?"selected":""}>${esc(o.l===""?"— none —":o.l)}</option>`).join("");
+    return `<div><label>${label}</label>
+      <div style="display:flex;gap:4px;align-items:center">
+        <select style="flex:1;min-width:0;font:inherit;font-size:12.5px;padding:6px 8px;border-radius:8px;border:1px solid var(--border);background:var(--page);color:var(--ink-1)" onchange="updTeam('${d.id}','${role}',this.value)">${opts}</select>
+        ${contactBtns(c, "["+d.addr+"] ")}
+      </div></div>`;
+  }).join("");
+  const insp = S.inspections.filter(n=>n.dealId===d.id).map(n=>`<tr>
+    <td>${esc(n.type)}<div class="hint">${esc(contactName(n.partnerId))}</div></td>
+    <td style="white-space:nowrap">${fmtDate(n.date)}</td>
+    <td><span class="pill ${n.status==="Report received"?"ok":n.status==="Done"?"ok":n.status==="Scheduled"?"warn":"stage"}">${esc(n.status)}</span></td>
+    <td class="num">${n.cost?money(n.cost):"—"}</td>
+    <td style="font-size:12px">${esc(n.findings||"")}${n.followUp?`<div class="hint">→ ${esc(n.followUp)}</div>`:""}</td>
+    <td class="right"><button class="btn sm" onclick="editInsp('${n.id}')">Edit</button> <button class="btn sm danger" onclick="delInsp('${n.id}')">✕</button></td>
+  </tr>`).join("");
+  const loans = S.loans.filter(l=>l.dealId===d.id).map(l=>`<tr class="rowlink" onclick="showView('loans')">
+    <td>${esc(contactName(l.lenderId))}<div class="hint">${esc(l.kind)}</div></td>
+    <td class="num">${money(l.amount)}</td>
+    <td class="num">${l.rate}% + ${l.points}pts</td>
+    <td style="white-space:nowrap">${fmtDate(l.maturity)}</td>
+    <td><span class="pill ${l.status==="Funded"?"ok":l.status==="Approved"?"warn":"stage"}">${esc(l.status)}</span></td>
+  </tr>`).join("");
+  const log = S.comms.filter(m=>m.dealId===d.id).slice(0,6).map(m=>`<div class="task">
+    ${m.nextAction?`<input type="checkbox" ${m.done?"checked":""} onchange="toggleTask('${m.id}')" title="Mark next action done">`:`<span style="width:16px"></span>`}
+    <div class="tmain"><div>${esc(m.summary)}</div>
+      <div class="tsub">${fmtDate(m.date)} · ${esc(contactName(m.who))} · ${esc(m.channel)}${m.nextAction?` · <b>Next:</b> ${esc(m.nextAction)}`:""}</div></div>
+    ${m.nextDate&&!m.done?`<span class="due ${dueClass(m.nextDate)}">${fmtDate(m.nextDate)}</span>`:""}
+  </div>`).join("");
+  return `<div class="card"><h3>Deal team &amp; coordination — ${esc(d.addr)}</h3>
+    <div class="sub">assign your escrow, title, lender, agent and inspector · one click emails the whole team</div>
+    <div class="frm" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-bottom:12px">${teamRow}</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+      <button class="btn sm primary" onclick="emailTeam('${d.id}')">✉ Email deal team</button>
+      <button class="btn sm" onclick="logComm('${d.id}','')">＋ Log communication</button>
+      <button class="btn sm" onclick="editInsp(null,'${d.id}')">＋ Inspection</button>
+      <button class="btn sm" onclick="editLoan(null,'${d.id}')">＋ Loan</button>
+    </div>
+    <div class="grid2">
+      <div>
+        <h3 style="font-size:13px">Inspections</h3>
+        <table class="data"><thead><tr><th>Type</th><th>Date</th><th>Status</th><th class="num">Cost</th><th>Findings</th><th></th></tr></thead>
+        <tbody>${insp || `<tr><td colspan="6" class="empty">No inspections yet</td></tr>`}</tbody></table>
+        <h3 style="font-size:13px;margin-top:14px">Financing</h3>
+        <table class="data"><thead><tr><th>Lender</th><th class="num">Amount</th><th class="num">Rate</th><th>Maturity</th><th>Status</th></tr></thead>
+        <tbody>${loans || `<tr><td colspan="5" class="empty">No loans attached — add one</td></tr>`}</tbody></table>
+      </div>
+      <div>
+        <h3 style="font-size:13px">Recent communications</h3>
+        ${log || `<div class="empty">Nothing logged for this deal yet</div>`}
+      </div>
+    </div></div>`;
+}
+
+/* ============ PARTNERS ============ */
+let partnerFilter = "all";
+function renderPartners(){
+  const chips = ["all"].concat(PARTNER_CATS).map(c=>{
+    const n = c==="all" ? S.partners.length : partnersByCat(c).length;
+    if(c!=="all" && !n) return "";
+    return `<button class="btn sm ${partnerFilter===c?"primary":""}" onclick="partnerFilter='${c}';renderPartners()">${c==="all"?"All":c} · ${n}</button>`;
+  }).join(" ");
+  const list = partnerFilter==="all" ? S.partners : partnersByCat(partnerFilter);
+  const dealCount = p => S.deals.filter(d=>d.team && Object.values(d.team).includes(p.id)).length
+    + S.scout.filter(s=>s.partnerId===p.id).length + S.loans.filter(l=>l.lenderId===p.id).length;
+  const rows = list.map(p=>{
+    const c = findContact(p.id);
+    return `<tr>
+      <td><span class="addr">${esc(p.name)}<span class="area">${esc(p.company||"")}</span></span></td>
+      <td><span class="pill stage">${esc(p.cat)}</span></td>
+      <td style="font-size:12.5px">${esc(p.area||"—")}</td>
+      <td style="white-space:nowrap">${esc(p.phone||"")}<div class="hint">${esc(p.email||"")}</div></td>
+      <td>${"★".repeat(+p.rating||0)}<span class="muted">${"★".repeat(Math.max(0,5-(+p.rating||0)))}</span></td>
+      <td class="num">${dealCount(p)||"—"}</td>
+      <td style="font-size:12px;max-width:220px">${esc(p.notes||"")}</td>
+      <td class="right" style="white-space:nowrap">${contactBtns(c)}
+        <button class="btn sm" onclick="logComm('','${p.id}')">Log</button>
+        <button class="btn sm" onclick="editPartner('${p.id}')">Edit</button>
+        <button class="btn sm danger" onclick="delPartner('${p.id}')">✕</button></td>
+    </tr>`;
+  }).join("");
+  $("#v-partners").innerHTML = `
+    <div class="view-head"><h2>Partners</h2><span class="hint">agents · lenders · escrow · title · inspectors · attorneys</span><div class="spacer"></div>
+      <button class="btn primary" onclick="editPartner(null)">+ Add partner</button></div>
+    <div class="card" style="padding:12px 16px"><div style="display:flex;gap:6px;flex-wrap:wrap">${chips}</div></div>
+    <div class="card">
+      <table class="data"><thead><tr><th>Partner</th><th>Category</th><th>Coverage</th><th>Contact</th><th>Rating</th><th class="num">Linked</th><th>Notes</th><th></th></tr></thead>
+      <tbody>${rows || `<tr><td colspan="8" class="empty">No partners in this category yet</td></tr>`}</tbody></table>
+    </div>`;
+}
+function editPartner(id){
+  const p = id ? S.partners.find(x=>x.id===id) : {id:"PT"+uid(), cat:"Agent", rating:4};
+  openForm(id?"Edit partner":"New partner", [
+    {key:"name", label:"Name"}, {key:"company", label:"Company"},
+    {key:"cat", label:"Category", type:"select", opts:PARTNER_CATS},
+    {key:"rating", label:"Rating (1–5)", type:"number", step:1},
+    {key:"phone", label:"Phone"}, {key:"email", label:"Email"},
+    {key:"area", label:"Coverage / specialty", full:true},
+    {key:"notes", label:"Notes", type:"textarea", full:true}
+  ], p, o=>{ if(!id) S.partners.unshift(o); renderAll(); });
+}
+function delPartner(id){ confirmDel("Remove this partner? Deals referencing them keep working.", ()=>{ S.partners=S.partners.filter(p=>p.id!==id); renderAll(); }); }
+
+/* ============ LOANS ============ */
+const LOAN_KINDS = ["Hard money","Construction","DSCR","Bridge","Private money","Bank / conventional","Other"];
+const LOAN_STATUS = ["Quoted","Applied","Approved","Funded","Paid off","Declined"];
+function renderLoans(){
+  const active = S.loans.filter(l=>["Approved","Funded"].includes(l.status));
+  const outstanding = S.loans.filter(l=>l.status==="Funded").reduce((a,l)=>a+(+l.drawn||+l.amount||0),0);
+  const principal = active.reduce((a,l)=>a+(+l.amount||0),0);
+  const wRate = principal ? active.reduce((a,l)=>a+(+l.amount||0)*(+l.rate||0),0)/principal : 0;
+  const nextMat = active.filter(l=>l.maturity).sort((a,b)=>a.maturity.localeCompare(b.maturity))[0];
+  const dealName = id => id ? (S.deals.find(d=>d.id===id)?.addr || id) : "Fund / project level";
+  const rows = S.loans.map(l=>`<tr>
+    <td><span class="addr">${esc(dealName(l.dealId))}<span class="area">${esc(l.kind)}</span></span></td>
+    <td>${esc(contactName(l.lenderId))}</td>
+    <td class="num">${money(l.amount)}</td>
+    <td class="num">${l.rate}% + ${l.points} pts</td>
+    <td class="num">${l.termMonths} mo</td>
+    <td style="white-space:nowrap"><span class="due ${dueClass(l.maturity)}">${fmtDate(l.maturity)}</span></td>
+    <td class="num">${l.drawn?money(l.drawn):"—"}</td>
+    <td><span class="pill ${l.status==="Funded"?"ok":l.status==="Approved"?"warn":l.status==="Declined"?"bad":"stage"}">${esc(l.status)}</span></td>
+    <td class="right" style="white-space:nowrap">
+      <button class="btn sm" onclick="editLoan('${l.id}')">Edit</button>
+      <button class="btn sm danger" onclick="delLoan('${l.id}')">✕</button></td>
+  </tr>`).join("");
+  $("#v-loans").innerHTML = `
+    <div class="view-head"><h2>Loans &amp; Financing</h2><div class="spacer"></div>
+      <button class="btn primary" onclick="editLoan(null)">+ Add loan</button></div>
+    <div class="tiles">
+      <div class="tile"><div class="k">Active principal</div><div class="v">${moneyK(principal)}</div><div class="d">${active.length} approved / funded facilit${active.length===1?"y":"ies"}</div></div>
+      <div class="tile"><div class="k">Drawn / outstanding</div><div class="v">${moneyK(outstanding)}</div><div class="d">funded balances</div></div>
+      <div class="tile"><div class="k">Weighted rate</div><div class="v">${wRate?wRate.toFixed(2)+"%":"—"}</div><div class="d">across active principal</div></div>
+      <div class="tile"><div class="k">Next maturity</div><div class="v">${nextMat?fmtDate(nextMat.maturity):"—"}</div><div class="d">${nextMat?esc(dealName(nextMat.dealId)):"no active loans"}</div></div>
+    </div>
+    <div class="card">
+      <table class="data"><thead><tr><th>Deal</th><th>Lender</th><th class="num">Amount</th><th class="num">Rate</th><th class="num">Term</th><th>Maturity</th><th class="num">Drawn</th><th>Status</th><th></th></tr></thead>
+      <tbody>${rows || `<tr><td colspan="9" class="empty">No loans yet — add your hard money and construction facilities</td></tr>`}</tbody></table>
+    </div>`;
+}
+function editLoan(id, dealId){
+  const l = id ? S.loans.find(x=>x.id===id) : {id:"LN"+uid(), dealId:dealId||"", kind:"Hard money", status:"Quoted", amount:0, rate:S.settings.hardMoneyRate, points:S.settings.hardMoneyPoints, termMonths:12, drawn:0};
+  openForm(id?"Edit loan":"New loan", [
+    {key:"dealId", label:"Deal", type:"select", opts:[{v:"",l:"Fund / project level"}].concat(S.deals.map(d=>({v:d.id,l:d.addr})))},
+    {key:"lenderId", label:"Lender", type:"select", opts:partnerOpts("Lender")},
+    {key:"kind", label:"Loan type", type:"select", opts:LOAN_KINDS},
+    {key:"status", label:"Status", type:"select", opts:LOAN_STATUS},
+    {key:"amount", label:"Amount ($)", type:"number"}, {key:"drawn", label:"Drawn to date ($)", type:"number"},
+    {key:"rate", label:"Rate (%)", type:"number", step:0.125}, {key:"points", label:"Points", type:"number", step:0.25},
+    {key:"termMonths", label:"Term (months)", type:"number"},
+    {key:"startDate", label:"Start (YYYY-MM-DD)"}, {key:"maturity", label:"Maturity (YYYY-MM-DD)"},
+    {key:"notes", label:"Notes", type:"textarea", full:true}
+  ], l, o=>{ if(!id) S.loans.unshift(o); renderAll(); });
+}
+function delLoan(id){ confirmDel("Delete this loan?", ()=>{ S.loans=S.loans.filter(l=>l.id!==id); renderAll(); }); }
+
+/* ============ INSPECTIONS ============ */
+const INSP_TYPES = ["General","Termite","Sewer scope","Roof","Foundation","Electrical","Plumbing","Chimney","Mold / environmental","Appraisal","City / permit", "Other"];
+const INSP_STATUS = ["To schedule","Scheduled","Done","Report received","Issue — renegotiating"];
+function editInsp(id, dealId){
+  const n = id ? S.inspections.find(x=>x.id===id) : {id:"N"+uid(), dealId:dealId||"", type:"General", status:"To schedule", date:today(), cost:0};
+  openForm(id?"Edit inspection":"New inspection", [
+    {key:"dealId", label:"Deal", type:"select", opts:S.deals.map(d=>({v:d.id,l:d.addr}))},
+    {key:"partnerId", label:"Inspector", type:"select", opts:partnerOpts("Inspector")},
+    {key:"type", label:"Type", type:"select", opts:INSP_TYPES},
+    {key:"status", label:"Status", type:"select", opts:INSP_STATUS},
+    {key:"date", label:"Date (YYYY-MM-DD)"}, {key:"cost", label:"Cost ($)", type:"number"},
+    {key:"findings", label:"Findings", type:"textarea", full:true},
+    {key:"followUp", label:"Follow-up needed", full:true}
+  ], n, o=>{ if(!id) S.inspections.unshift(o); renderAll(); });
+}
+function delInsp(id){ confirmDel("Delete this inspection?", ()=>{ S.inspections=S.inspections.filter(n=>n.id!==id); renderAll(); }); }
+
+/* ============ COMMS & COORDINATION ============ */
+const commFields = () => [
+  {key:"date", label:"Date (YYYY-MM-DD)"},
+  {key:"channel", label:"Channel", type:"select", opts:["Email","Call","Text","Meeting","Site visit","Other"]},
+  {key:"dealId", label:"Related deal", type:"select", opts:[{v:"",l:"— general / fund —"}].concat(S.deals.map(d=>({v:d.id,l:d.addr})))},
+  {key:"who", label:"With", type:"select", opts:allContactOpts()},
+  {key:"summary", label:"What was said / decided", type:"textarea", full:true},
+  {key:"nextAction", label:"Next action (leave blank if none)", full:true},
+  {key:"nextDate", label:"Next action due (YYYY-MM-DD)"},
+  {key:"doneStr", label:"Next action status", type:"select", opts:["Open","Done"]}
+];
+function editComm(id){
+  const m = S.comms.find(x=>x.id===id); if(!m) return;
+  m.doneStr = m.done ? "Done" : "Open";
+  openForm("Edit communication", commFields(), m, o=>{ o.done = o.doneStr==="Done"; delete o.doneStr; renderAll(); });
+}
+function delComm(id){ confirmDel("Delete this log entry?", ()=>{ S.comms=S.comms.filter(m=>m.id!==id); renderAll(); }); }
+function toggleTask(id){ const m=S.comms.find(x=>x.id===id); if(m){ m.done=!m.done; renderAll(); } }
+let commFilter = {deal:"all", who:"all"};
+function renderComms(){
+  const tasks = openTasks();
+  const overdue = tasks.filter(t=>t.nextDate && t.nextDate < today()).length;
+  const wk = new Date(Date.now()-7*864e5).toISOString().slice(0,10);
+  const thisWk = S.comms.filter(m=>m.date>=wk).length;
+  const dealName = id => id ? (S.deals.find(d=>d.id===id)?.addr || "") : "";
+  const taskRows = tasks.map(m=>`<div class="task">
+    <input type="checkbox" onchange="toggleTask('${m.id}')" title="Mark done">
+    <div class="tmain"><div>${esc(m.nextAction)}</div>
+      <div class="tsub">${m.dealId?`<a class="clink" href="#" onclick="gotoDeal('${m.dealId}');return false">${esc(dealName(m.dealId))}</a> · `:""}${esc(contactName(m.who))} · from ${fmtDate(m.date)}</div></div>
+    <span class="due ${dueClass(m.nextDate)}">${m.nextDate?fmtDate(m.nextDate):"no date"}</span>
+    <button class="btn sm" onclick="editComm('${m.id}')">Edit</button>
+  </div>`).join("");
+  const dirGroup = (title, items, mk) => items.length ? `<h3 style="font-size:13px;margin:12px 0 4px">${title}</h3>` + items.map(mk).join("") : "";
+  const dirRow = (id, name, sub) => { const c = findContact(id); return `<div class="task"><div class="tmain"><div style="font-weight:650">${esc(name)}</div><div class="tsub">${esc(sub)}</div></div>${contactBtns(c)}<button class="btn sm" onclick="logComm('','${id}')">Log</button></div>`; };
+  const directory =
+    dirGroup("Partners", S.partners, p=>dirRow(p.id, p.name, p.cat+" · "+(p.company||"")+(p.phone?" · "+p.phone:""))) +
+    dirGroup("Investors", S.investors, i=>dirRow(i.id, i.name, "Investor · "+(i.email||""))) +
+    dirGroup("Crew &amp; subs", S.crew, c=>dirRow(c.id, c.name, (c.trade||"Crew")+(c.phone?" · "+c.phone:"")));
+  const whoOpts = [{v:"all",l:"Everyone"}].concat(allContactOpts().filter(o=>o.v).map(o=>({v:o.v,l:o.l})));
+  const dealOpts = [{v:"all",l:"All deals"},{v:"",l:"General / fund"}].concat(S.deals.map(d=>({v:d.id,l:d.addr})));
+  const logRows = S.comms
+    .filter(m=>(commFilter.deal==="all"||m.dealId===commFilter.deal) && (commFilter.who==="all"||m.who===commFilter.who))
+    .slice().sort((a,b)=>(b.date||"").localeCompare(a.date||""))
+    .map(m=>`<tr>
+      <td style="white-space:nowrap">${fmtDate(m.date)}</td>
+      <td><span class="pill stage">${esc(m.channel)}</span></td>
+      <td>${m.dealId?`<a class="clink" href="#" onclick="gotoDeal('${m.dealId}');return false">${esc(dealName(m.dealId))}</a>`:"<span class='muted'>General</span>"}</td>
+      <td>${esc(contactName(m.who))}</td>
+      <td style="font-size:12.5px">${esc(m.summary)}</td>
+      <td style="font-size:12px">${m.nextAction?`${m.done?"✅":"⬜"} ${esc(m.nextAction)}${m.nextDate?` <span class="due ${m.done?"":dueClass(m.nextDate)}">${fmtDate(m.nextDate)}</span>`:""}`:"—"}</td>
+      <td class="right" style="white-space:nowrap">
+        <button class="btn sm" onclick="editComm('${m.id}')">Edit</button>
+        <button class="btn sm danger" onclick="delComm('${m.id}')">✕</button></td>
+    </tr>`).join("");
+  $("#v-comms").innerHTML = `
+    <div class="view-head"><h2>Communications &amp; Coordination</h2><div class="spacer"></div>
+      <button class="btn primary" onclick="logComm('','')">＋ Log communication</button></div>
+    <div class="tiles">
+      <div class="tile"><div class="k">Open next actions</div><div class="v">${tasks.length}</div><div class="d">${overdue?`<span class="down">${overdue} overdue</span>`:"nothing overdue"}</div></div>
+      <div class="tile"><div class="k">Logged this week</div><div class="v">${thisWk}</div><div class="d">calls, emails, meetings</div></div>
+      <div class="tile"><div class="k">People in directory</div><div class="v">${S.partners.length + S.investors.length + S.crew.length}</div><div class="d">${S.partners.length} partners · ${S.investors.length} investors · ${S.crew.length} crew</div></div>
+      <div class="tile"><div class="k">Deals with activity</div><div class="v">${new Set(S.comms.filter(m=>m.dealId).map(m=>m.dealId)).size}</div><div class="d">have logged communications</div></div>
+    </div>
+    <div class="grid2">
+      <div class="card"><h3>Next actions</h3><div class="sub">everything you owe someone, sorted by due date — check off as you go</div>
+        ${taskRows || `<div class="empty">No open next actions 🎉</div>`}</div>
+      <div class="card"><h3>Directory</h3><div class="sub">every party in one place — email, call, text, or log a touch</div>
+        <div style="max-height:420px;overflow:auto">${directory || `<div class="empty">Add partners, investors and crew to build your directory</div>`}</div></div>
+    </div>
+    <div class="card"><h3>Communication log</h3>
+      <div class="sub" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">filter:
+        <select onchange="commFilter.deal=this.value;renderComms()" style="font:inherit;font-size:12px;padding:4px 8px;border-radius:6px;border:1px solid var(--border);background:var(--page);color:var(--ink-1)">${dealOpts.map(o=>`<option value="${esc(o.v)}" ${o.v===commFilter.deal?"selected":""}>${esc(o.l)}</option>`).join("")}</select>
+        <select onchange="commFilter.who=this.value;renderComms()" style="font:inherit;font-size:12px;padding:4px 8px;border-radius:6px;border:1px solid var(--border);background:var(--page);color:var(--ink-1)">${whoOpts.map(o=>`<option value="${esc(o.v)}" ${o.v===commFilter.who?"selected":""}>${esc(o.l)}</option>`).join("")}</select>
+      </div>
+      <table class="data"><thead><tr><th>Date</th><th>Channel</th><th>Deal</th><th>With</th><th>Summary</th><th>Next action</th><th></th></tr></thead>
+      <tbody>${logRows || `<tr><td colspan="7" class="empty">Nothing logged yet — every call, email and site visit belongs here</td></tr>`}</tbody></table>
+    </div>`;
+}
+
+/* ============ NAV / BOOT ============ */
+function showView(v){
+  document.querySelectorAll("nav.tabs button").forEach(b=>b.classList.toggle("on", b.dataset.v===v));
+  document.querySelectorAll(".view").forEach(x=>x.classList.toggle("on", x.id==="v-"+v));
+}
+document.getElementById("tabs").addEventListener("click", e=>{
+  const b = e.target.closest("button"); if(b) showView(b.dataset.v);
+});
+function renderAll(){
+  renderDash(); renderScout(); renderLeads(); renderDeals(); renderProjects(); renderCrew();
+  renderPartners(); renderLoans(); renderInvestors(); renderMoney(); renderComms();
+}
+
+/* every render follows a change, so persist after each one (debounced to one write) */
+["renderAll","renderDash","renderScout","renderLeads","renderDeals","renderProjects",
+ "renderCrew","renderPartners","renderLoans","renderInvestors","renderMoney","renderComms"]
+  .forEach(n=>{ const f = window[n]; window[n] = function(){ const r = f.apply(this, arguments); autoSave(); return r; }; });
+
+/* ============ BOOT ============ */
+function renderDevTools(){
+  const el = $("#devTools"); if(!el) return;
+  if(!HAS_STORE){ el.innerHTML = `<span class="hint">Preview mode — changes aren't saved on this device. Use 💾 Save to keep a copy.</span>`; return; }
+  const locked = !!LS.get(K_SALT);
+  el.innerHTML =
+    `<button class="btn sm" onclick="changePin()">${locked?"Change passcode":"Set a passcode"}</button>` +
+    `<button class="btn sm danger" onclick="forgetData()">Forget data on this device</button>`;
+}
+async function boot(){
+  buildKeypad();
+  if(!HAS_STORE){ renderAll(); renderDevTools(); return; }   // sandboxed preview — in-memory only
+  if(LS.get(K_SALT)){                       // passcode already set: unlock before showing anything
+    showLock("enter"); renderDevTools(); return;
+  }
+  if(LS.get(K_NOPIN)){                      // chose no passcode
+    await loadLocal(); renderAll(); renderDevTools(); return;
+  }
+  await loadLocal(); renderAll(); renderDevTools();
+  if(SUBTLE) showLock("set");               // first run: offer to lock the device
+}
+const _dev = renderDevTools;
+["setPin","skipPin","tryUnlock","forgetData"].forEach(n=>{ const f = window[n]; window[n] = async function(){ const r = await f.apply(this, arguments); _dev(); return r; }; });
+boot();
+</script>
+</body>
+</html>
